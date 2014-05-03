@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :activities
 	
 	# attr_accesible :username, :name, :email, :password, :password_confirmation
 

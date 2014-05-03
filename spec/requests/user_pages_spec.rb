@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe "User pages" do
 
-	subject { page }
+	# subject { page }
 
-	describe "singup page" do
-		before { visit signup_path }
+	# describe "singup page" do
+	# 	before { visit signup_path }
 
-		it { should have_content("Sign up") }
-		it { should have_title("Sign up") }
-    end
+	# 	it { should have_content("Sign up") }
+	# 	it { should have_title("Sign up") }
+ #    end
 end

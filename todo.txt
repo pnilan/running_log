@@ -1,0 +1,16 @@
+-ADDING MODELS (User, Acitivty, Goal, Relationship)
+	1. Add model
+	2. Determine attributes for model
+	3. Determine associations between model (if more than one model)
+	4. Repeat until no other models.
+
+-OPERATING ON MODELS
+	1. Determine how each model will be operated on
+
+RANDOM TO-DOs
+-Add paperclip for profile picture management
+-create static pages for Home, About, Contact
+-create sessions for users (remember me)
+-create "forgot password" feature
+-create user email verifcation (and remove password confirmation/email regex validation)
+
