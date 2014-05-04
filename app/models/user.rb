@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :activities
 	
-	# attr_accesible :username, :name, :email, :password, :password_confirmation
-
 	before_save do
 		self.username.downcase!
 		self.email.downcase!

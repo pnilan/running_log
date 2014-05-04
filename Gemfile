@@ -30,6 +30,9 @@ group :test do
 	gem 'factory_girl_rails', '4.2.1'
 end
 
+#Twitter bootstrap
+gem 'twitter-bootstrap-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '4.0.1'
 
@@ -39,11 +42,12 @@ gem 'uglifier', '2.1.1'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '4.0.1'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# See https://github.com/sstephenson/execjs#readme for moresupported 	runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

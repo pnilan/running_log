@@ -190,6 +190,11 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.2)
       coffee-rails
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.39)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -226,5 +231,6 @@ DEPENDENCIES
   spork-rails (= 4.0.0)
   sprockets (= 2.11.0)
   turbolinks
+  twitter-bootstrap-rails
   uglifier (= 2.1.1)
   will_paginate (= 3.0.4)

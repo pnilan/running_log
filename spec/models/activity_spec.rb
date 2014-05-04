@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Activity do
-  
-end
+# describe Activity do
+  	
+# end
