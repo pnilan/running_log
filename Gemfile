@@ -12,7 +12,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 
 # Use postgres as the database for Active Record
-gem 'pg', '0.17.1'
+gem 'pg'
 gem 'sprockets', '2.11.0'
 
 group :development, :test do
