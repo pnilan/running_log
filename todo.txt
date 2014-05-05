@@ -9,8 +9,8 @@
 
 RANDOM TO-DOs
 -Add paperclip for profile picture management
--create static pages for Home, About, Contact
 -create sessions for users (remember me)
 -create "forgot password" feature
 -create user email verifcation (and remove password confirmation/email regex validation)
-
+-create email form for contact page
+-fix heroku problem

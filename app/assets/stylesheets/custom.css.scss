@@ -56,20 +56,18 @@ p {
 
 /* header */
 
-.brand {
+#logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
-  letter-spacing: ex1px;
+  color: #999;
+  letter-spacing: 1px;
   padding-top: 9px;
-  font-weight: bold;
   line-height: 1;
-}
-
-.brand:hover {
-  color: black;
-  text-decoration: none;
+  &:hover {
+  	color: #999;
+  	text-decoration: none;
+  }
 }
 
 /* footer */
