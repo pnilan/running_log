@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 		self.username.downcase!
 		self.email.downcase!
 	end
-
 	before_create :create_remember_token
 
 	VALID_USERNAME_REGEX = /\A[a-z0-9_-]+\z/i

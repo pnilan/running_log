@@ -14,3 +14,4 @@ RANDOM TO-DOs
 -create user email verifcation (and remove password confirmation/email regex validation)
 -create email form for contact page
 -fix heroku problem
+-add sign-in form for header when not signed in.

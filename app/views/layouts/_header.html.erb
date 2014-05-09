@@ -15,6 +15,7 @@
 
  				<% if signed_in? %>
 					<li><%= link_to "Users", '#' %></li>
+          <li class="divider-vertical"></li>
            <li id="fat-menu" class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                Account <b class="caret"></b>
@@ -28,6 +29,7 @@
                </li>
              </ul>
            </li>
+           <li class="divider-vertical"></li>
 				<% else %>
  					<li><%= link_to "About", about_path %></li>
  					<li><%= link_to "Contact", contact_path %></li>
@@ -35,7 +37,14 @@
  					<li class="dropdown">
  						<a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-							<p>SIGN IN FORM HERE</p>
+							<%= form_for(:session, url: sessions_path) do |f| %>
+
+                <%= f.text_field :email, id: "email_header", placeholder: "Email" %>
+
+                <%= f.password_field :password, id: "password_header", placeholder: "Password" %>
+
+                <%= f.submit "Sign in", class: 'btn btn-primary btn-small', id: "submit_header" %>
+              <% end %> 
             </div>
  					</li>
  					<li class="divider-vertical"></li>
