@@ -22,12 +22,16 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 
-html {
-  overflow-y: scroll;
+* {
+  margin: 0;
 }
 
-body {
-  padding-top: 60px;
+html, body {
+  height: 100%;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 section {
@@ -46,8 +50,13 @@ textarea {
   margin-bottom: 10px;
 }
 
-/* home */
+.right {
+  float: right;
+}
 
+.left {
+  float: left;
+}
 
 /* typography */
 
@@ -92,7 +101,31 @@ p {
   }
 }
 
+.dropdown-menu-large {
+  padding: 15px; 
+  padding-bottom: 0px;
+  width: 200px;
+}
+
+/* content */
+
+#wrap > .container {
+  padding-top: 60px;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -85px;
+}
+
+
 /* footer */
+
+.footer, .push {
+  height: 40px;
+}
 
 footer {
   margin-top: 45px;
@@ -128,7 +161,7 @@ footer ul li {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   @include box_sizing;
 }
 
@@ -148,6 +181,27 @@ input {
   @extend .control-group;
   @extend .error;
 }
+
+.form-inline span {
+  margin-left: 5px;
+}
+
+.below_signin {
+  text-align: center;
+  margin: 5px auto;
+}
+
+.forgotpw {
+  text-align: center;
+  padding: 0;
+  padding-top: 5px;
+  font-size: 0.9em;
+}
+
+form {
+  margin-bottom: 5px;
+}
+
 
 
 
