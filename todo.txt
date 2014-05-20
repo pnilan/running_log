@@ -8,10 +8,17 @@
 	1. Determine how each model will be operated on
 
 RANDOM TO-DOs
+-Finish MVP (+activity logging, graphing)
 -Add paperclip for profile picture management
--create sessions for users (remember me)
--create "forgot password" feature
 -create user email verifcation (and remove password confirmation/email regex validation)
 -create email form for contact page
--fix heroku problem
+-Work on homepage
+
+
+
+
+COMPLETED:
 -add sign-in form for header when not signed in.
+-fix heroku problem
+-create "forgot password" feature
+-create sessions for users (remember me)

@@ -1,8 +1,22 @@
+
+<% if signed_in? %>
+
+<div class="center hero-unit" id="home-bg">
+  			<h1>Hang tight!</h1>
+  			<h2>
+    			Training log functionality coming soon.
+  			</h2>
+</div>
+
+<% else %>
+
 <div class="center hero-unit" id="home-bg">
   			<h1>SecondWind</h1>
   			<h2>
-    			The minimalist training log for the minimalist athlete.
+    			Bringing online training logs back to the basics.
   			</h2>
 	
 		  	<%= link_to "Sign up!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
+
+<% end %>

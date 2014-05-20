@@ -15,4 +15,7 @@
 /log/*.log
 /tmp
 
-database.yml
+/config/database.yml
+
+# Ignore custom environment variables
+/config/initializers/app_env_vars.rb
