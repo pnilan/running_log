@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512140721) do
+ActiveRecord::Schema.define(version: 20140529200018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: true do |t|
-    t.string   "type"
     t.date     "date"
     t.decimal  "distance"
-    t.time     "duration"
-    t.time     "pace"
     t.text     "content"
     t.integer  "calories"
     t.integer  "bpm"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "type_id"
+    t.integer  "duration"
+    t.integer  "pace"
   end
 
   create_table "users", force: true do |t|
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140512140721) do
     t.string   "remember_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

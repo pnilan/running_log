@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :activities
+	has_many :activities, dependent: :destroy
 	
 	before_save do
 		self.username.downcase!
@@ -45,6 +45,6 @@ class User < ActiveRecord::Base
 		end
 
 		def create_password_reset_token
-			self.password_reset_token = User.digest(User.new_token)			
+			self.password_reset_token = User.digest(User.new_token)		
 		end
 end

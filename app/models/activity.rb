@@ -1,10 +1,9 @@
 class Activity < ActiveRecord::Base
 	belongs_to :user
-	# default_scope -> { order('date DESC') }
+	# has_one :type
+	default_scope -> { order('date DESC') }
 
-	# validates :type
-	# validates :distance
-	# validates :duration
-	# validates :user_id, presence: true
-
+	validates :date, :user_id, :type_id, presence: true
+	validates :content, length: { maximum: 1000 }
+	validates :pace, presence: true, if: "distance.present? && duration.present?"
 end

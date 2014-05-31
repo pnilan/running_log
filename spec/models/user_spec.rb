@@ -14,6 +14,7 @@ describe User do
 	it { should respond_to(:password_confirmation) }
 	it { should respond_to(:remember_token) }
 	it { should respond_to(:authenticate) }
+	it { should respond_to(:activities) }
 
 	it { should be_valid }
 
@@ -145,6 +146,31 @@ describe User do
 		it "delivers email to user" do
 			user.send_password_reset
 			last_email.to.should include (user.email)
+		end
+	end
+
+	describe "activity associations" do
+
+		before { @user.save }
+
+		let!(:older_activity) do
+			FactoryGirl.create(:activity, user: @user, date: 1.day.ago)
+		end
+		let!(:newer_activity) do
+			FactoryGirl.create(:activity, user: @user, date: 1.hour.ago)
+		end
+
+		it "should have the correct activities in the correct order" do
+			expect(@user.activities.to_a).to eq [newer_activity, older_activity]
+		end
+
+		it "should destroy associated activities" do
+			activities = @user.activities.to_a
+			@user.destroy
+			expect(activities).not_to be_empty
+			activities.each do |activity|
+				expect(Activity.where(id: activity.id)).to be_empty
+			end
 		end
 	end
 end
