@@ -49,4 +49,27 @@ describe "User pages" do
     	it { should have_content(user.username) }
     	it { should have_title(user.username) }
     end
+
+    describe "edit" do
+    	let(:user) { FactoryGirl.create(:user) }
+
+    	before do
+    		sign_in(user)
+    		visit edit_user_path(user)
+    	end
+
+    	describe "page" do
+    		it { should have_content("Update your settings") }
+    		it { should have_title("Edit settings") }
+    	end
+
+    	describe "with invalid information" do
+    		before do
+    			fill_in "Password",	with: "a"
+    			click_button "Save changes"
+    		end
+
+    		it { should have_content("error") }
+    	end
+    end
 end

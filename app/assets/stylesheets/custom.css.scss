@@ -110,12 +110,17 @@ p {
 /* content */
 
 #wrap > .container {
-  padding-top: 60px;
+  margin-top: 60px;
+}
+
+@media (max-width: 979px) {
+  #wrap > .container {
+    margin-top: 0;
+  }
 }
 
 #wrap {
   min-height: 100%;
-  height: auto !important;
   height: 100%;
   margin: 0 auto -40px;
 }
@@ -132,6 +137,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
+  // background-color: #d5d5d5;
 }
 
 footer a {
