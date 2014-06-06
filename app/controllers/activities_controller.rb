@@ -2,13 +2,18 @@ class ActivitiesController < ApplicationController
 before_action :signed_in_user, only: [:create, :destroy, :edit, :update]
 before_action :correct_user, only: [:destroy, :edit, :update]
 
+  def new
+    @activity = Activity.new
+  end
 
   def create  	
   	@activity = current_user.activities.build(activity_params)
   	if @activity.save
   		flash[:success] = "New activity added!"
-  	end
-  	redirect_to root_url
+  	  redirect_to root_url
+    else
+      render 'new'
+    end
   end
 
   def edit

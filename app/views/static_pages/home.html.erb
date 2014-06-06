@@ -1,11 +1,8 @@
 
 <% if signed_in? %>
 
-<div class="center hero-unit" id="home-bg">
-  			<h1>Hang tight!</h1>
-  			<h2>
-    			Training log functionality coming soon.
-  			</h2>
+<div class="span6">
+  <%= link_to "Add an activity", new_activity_path %>
 </div>
 
 <% else %>

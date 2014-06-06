@@ -7,6 +7,21 @@
 -OPERATING ON MODELS
 	1. Determine how each model will be operated on
 
+Next step:
+
+1) Activity model:
+	* create
+	* edit
+	* delete
+	* show
+2) create a type model
+	* types has_many activities, activities belongs_to types
+3) create a feed at the root
+4) enable users to destroy themselves but not other users
+5) create a user index that only admins can access which allows admins to delete users
+	* tests
+	* controller method/views
+
 RANDOM TO-DOs
 -Finish MVP (+activity logging, graphing)
 -Add paperclip for profile picture management

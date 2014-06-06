@@ -10,8 +10,8 @@
 				<%= f.label :type_id, "Activity type" %>
 				<%= f.text_field :type_id %>
 
-				<%= f.label :date, "Full date" %>
-				<%= f.text_field :date %> 		
+				<%= f.label :date, "Activity date" %>
+				<%= f.date_field :date, value: Date.today %> 		
 
 				<%= f.label :distance, "Distance" %>
 				<%= f.text_field :distance %>
@@ -31,7 +31,7 @@
 				<%= f.label :content, "Notes" %>
 				<%= f.text_field :content %>
 
-			<%= f.submit "Add my activity", class: "btn btn-large btn-primary" %>
+			<%= f.submit "Add new activity!", class: "btn btn-large btn-primary" %>
 		<% end %>
 	</div>
 </div>
