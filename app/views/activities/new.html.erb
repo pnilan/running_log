@@ -3,33 +3,48 @@
 <h1>Add an Activity</h1>
 
 <div class="row">
-	<div class="span6 offset3">
+	<div class="span9 offset3">
 		<%= render 'shared/error_messages' %>
 		<%= form_for(@activity) do |f| %>
 
-				<%= f.label :type_id, "Activity type" %>
-				<%= f.text_field :type_id %>
-
+		<div class="row">
+			<div class="span3">
 				<%= f.label :date, "Activity date" %>
-				<%= f.date_field :date, value: Date.today %> 		
+				<%= f.date_field :date, value: Date.today %> 
+			</div>
+			<div class="span2">
+				<%= f.label :type_id, "Activity type" %>
+				<%= f.collection_select :type_id, Type.all, :id, :name, {include_blank: "Select a type"} %>				
+			</div>
+		</div>
 
-				<%= f.label :distance, "Distance" %>
-				<%= f.text_field :distance %>
-
-				<%= f.label :duration, "Duration" %>
-				<%= f.text_field :duration %> 
-			
-				<%= f.label :pace, "Pace" %>
-				<%= f.text_field :pace %>
+		<div class="row">
+			<div class="span3">
+					<%= f.label :distance, "Distance" %>
+					<%= f.text_field :distance , class: "inline-input" %> miles			
+			</div>
+		</div>
+			<div class="span2">
+					<%= f.label :duration, "Duration" %>
+					<%= f.text_field :duration, class: "inline-input" %>			
+			</div>
+			<div class="span2">
+					<%= f.label :pace, "Pace" %>
+					<%= f.text_field :pace, class: "inline-input" %>			
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="span2">
+					<%= f.label :calories, "Calories burned" %>
+					<%= f.text_field :calories, class: "inline-input" %>			
+			</div>
 	
-				<%= f.label :calories, "Calories burned" %>
-				<%= f.text_field :calories %>
-				
-				<%= f.label :bpm, "Average BPM" %>
-				<%= f.text_field :bpm %>
-
-				<%= f.label :content, "Notes" %>
-				<%= f.text_field :content %>
+			<div class="span4">
+					<%= f.label :content, "Notes" %>
+					<%= f.text_area :content, class: "activity-content" %>
+			</div>
+		</div>
 
 			<%= f.submit "Add new activity!", class: "btn btn-large btn-primary" %>
 		<% end %>

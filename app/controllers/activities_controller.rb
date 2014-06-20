@@ -1,7 +1,12 @@
 class ActivitiesController < ApplicationController
-before_action :signed_in_user, only: [:create, :destroy, :edit, :update]
+before_action :signed_in_user, only: [:create, :destroy, :edit, :update, :index]
 before_action :correct_user, only: [:destroy, :edit, :update]
 
+  def index
+    @activities = Activity.all
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+  end
+  
   def new
     @activity = Activity.new
   end
@@ -38,7 +43,7 @@ before_action :correct_user, only: [:destroy, :edit, :update]
   private
 
   	def activity_params
-  		params.require(:activity).permit(:date, :distance, :duration, :pace, :content, :calories, :bpm, :type_id)
+  		params.require(:activity).permit(:date, :distance, :duration, :pace, :content, :calories, :type_id)
   	end
 
   	# Before filters

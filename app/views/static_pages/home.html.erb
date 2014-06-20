@@ -1,19 +1,47 @@
 
 <% if signed_in? %>
 
-<div class="span6">
-  <%= link_to "Add an activity", new_activity_path %>
+<div class="container">
+		<%= link_to "Add an activity", new_activity_path, class: "btn btn-large btn-primary center" %>
 </div>
 
-<% else %>
+	<div class="container calendar">
 
-<div class="center hero-unit" id="home-bg">
-  			<h1>SecondWind</h1>
-  			<h2>
-    			Bringing online training logs back to the basics.
-  			</h2>
-	
-		  	<%= link_to "Sign up!", signup_path, class: "btn btn-large btn-primary" %>
-</div>
+		<h1 class="month">
+			<%= link_to "<", month: (@date.beginning_of_month-1).strftime("%Y-%m") %>
+			<%=h @date.strftime("%B %Y") %>
+			<%= link_to ">", month: (@date.end_of_month+1).strftime("%Y-%m") %>
+		</h1>
 
-<% end %>
+		<%= calendar_for(@activities, year: @date.year, month: @date.month) do |calendar| %>
+
+			<%= calendar.head("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday") %>
+
+			<%= calendar.day do |date, activities| %>
+				
+				<%= date.day %>
+
+				<ul>
+					<% for activity in activities %>
+						<li><%= link_to h(activity.distance), activity %></li>
+					<% end %>
+				</ul>
+			<% end %>
+		<% end %>	
+	</div>
+
+	<% else %>
+
+	<div class="container">
+		<div class="center hero-unit">
+			<h1>SecondWind</h1>
+			<h2>
+				Bringing online training logs back to the basics.
+			</h2>
+
+			<%= link_to "Sign up!", signup_path, class: "btn btn-large btn-primary" %>
+		</div>
+	</div>
+
+
+	<% end %>

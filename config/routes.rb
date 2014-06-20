@@ -2,9 +2,9 @@ RunningLog::Application.routes.draw do
 
 
   resources :users
+  resources :activities
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
-  resources :activities
 
   root 'static_pages#home'
   match '/contact', to: 'static_pages#contact', via: 'get'
@@ -13,6 +13,8 @@ RunningLog::Application.routes.draw do
   match '/signup',    to: 'users#new',          via: 'get'
   match '/signin',    to: 'sessions#new',       via: 'get'
   match '/signout',   to: 'sessions#destroy',   via: 'delete'
+
+  match '/passwordreset', to: "password_resets#new", via: 'get'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

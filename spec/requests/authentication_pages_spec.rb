@@ -85,6 +85,11 @@ describe "Authentication" do
 
 			describe "in the Activities controller" do
 
+				describe "visiting the index page" do
+					before { visit activities_path }
+					it { should have_title('Sign in')}
+				end
+
 				describe "submitting to the create action" do
 					before { post activities_path }
 					specify { expect(response).to  redirect_to(signin_path) }

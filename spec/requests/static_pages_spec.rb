@@ -5,11 +5,15 @@ describe "Static Pages" do
 	subject { page }
 
 	describe "Home page" do
+		let(:user) { FactoryGirl.create(:user) }
+
 		before { visit root_path }
 
 		it { should have_content("SecondWind") }
 		it { should have_title(full_title('')) }
 		it { should_not have_title('| Home') }
+
+
 
 	end
 

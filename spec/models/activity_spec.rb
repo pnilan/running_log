@@ -5,7 +5,7 @@ describe Activity do
 	let(:user) { FactoryGirl.create(:user) }
 
 	before do
-		@activity = user.activities.build(date: Date.today, distance: 10.00, duration: 3600, pace: 360, content: "Lorem ipsum", calories: 1000, bpm: 120, user_id: user.id, type_id: 1)
+		@activity = user.activities.build(date: Date.today, distance: 10.00, duration: 3600, pace: 360, content: "Lorem ipsum", calories: 1000, user_id: user.id, type_id: 1)
 	end
 
 	subject { @activity }
@@ -16,7 +16,6 @@ describe Activity do
 	it { should respond_to(:pace) }
 	it { should respond_to(:content) }
 	it { should respond_to(:calories) }
-	it { should respond_to(:bpm) }
 	it { should respond_to(:user_id) }
 	it { should respond_to(:type_id) }
 	it { should respond_to(:user) }

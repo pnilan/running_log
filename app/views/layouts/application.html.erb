@@ -13,11 +13,13 @@
 </head>
 <body>
 
-<div id="wrap">
+<!-- #wrap for sticky footer -->
+<div class="wrap">
 
+  <!-- Navbar -->
   <%= render 'layouts/header' %>
 
-
+    <!-- Page content -->
     <div class="container">
      <% flash.each do |key, value| %>
      <div class="alert alert-<%= key %>"><%= value %>

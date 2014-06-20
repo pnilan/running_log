@@ -14,6 +14,7 @@ Next step:
 	* edit
 	* delete
 	* show
+	* index (create a dynamic calendar where clicking in cells will either show the existing activity or will create a new one)
 2) create a type model
 	* types has_many activities, activities belongs_to types
 3) create a feed at the root
@@ -23,7 +24,8 @@ Next step:
 	* controller method/views
 
 RANDOM TO-DOs
--Finish MVP (+activity logging, graphing)
+-Finish MVP (+activity logging
+- Use d3.js to create graphing
 -Add paperclip for profile picture management
 -create user email verifcation (and remove password confirmation/email regex validation)
 -create email form for contact page

@@ -19,8 +19,11 @@ FactoryGirl.define do
 		pace 360
 		content "Lorem ipsum"
 		calories 1000
-		bpm 120
 		user
 		type_id 1
+	end
+
+	factory :type do
+		name "Recovery"
 	end
 end

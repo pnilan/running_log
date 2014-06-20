@@ -5,13 +5,14 @@ ruby '2.0.0'
 gem 'rails', '4.0.4'
 gem 'bootstrap-sass', '2.3.2.0'
 
+
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '3.1.2'
+gem 'bcrypt-ruby'
 # gem 'faker', '1.1.2'
 # gem 'will_paginate', '3.0.4'
 # gem 'bootstrap-will_paginate', '0.0.9'
 
-# Use postgres as the database for Active Record
+# Use postgresql as the database for ActiveRecord
 gem 'pg'
 
 gem 'sprockets', '2.11.0'
@@ -55,3 +56,6 @@ end
 group :production do
 	gem 'rails_12factor', '0.0.2'
 end
+
+# TableBuilder to create the dynamic, responsive calendar view of activities
+gem "watu_table_builder", :require => "table_builder"
