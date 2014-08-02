@@ -33,7 +33,7 @@ describe "Activity pages" do
 				fill_in "date", with: Date.today
 			end
 
-			it "should create a micropost" do
+			it "should create an activity" do
 				expect { click_button "Add new activity!"}.to change(Activity, :count).by(1)
 			end
 
@@ -50,20 +50,11 @@ describe "Activity pages" do
 
 	describe "activity destruction" do
 		before { FactoryGirl.create(:activity, user: user) }
+		
 
 		describe "as correct user" do
 
 			it "should delete an activity"
-		end
-	end
-
-	describe "activity indexing" do
-		before { FactoryGirl.create(:activity, user: user) }
-
-		describe"as correct user" do
-
-			it "should show the user's activities for the current month"
-
 		end
 	end
 end

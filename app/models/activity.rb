@@ -6,6 +6,5 @@ class Activity < ActiveRecord::Base
 	validates :date, :user_id, :type_id, presence: true
 	validates :content, length: { maximum: 1000 }
 	validates :pace, presence: true, if: "distance.present? && duration.present?"
-
-
+	
 end

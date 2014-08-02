@@ -3,43 +3,19 @@
 
 <div class="container">
 		<%= link_to "Add an activity", new_activity_path, class: "btn btn-large btn-primary center" %>
+		<%= link_to "Sign out", signout_path, method: "delete", class: "btn btn-large btn-primary center"  %>
 </div>
-
-	<div class="container calendar">
-
-		<h1 class="month">
-			<%= link_to "<", month: (@date.beginning_of_month-1).strftime("%Y-%m") %>
-			<%=h @date.strftime("%B %Y") %>
-			<%= link_to ">", month: (@date.end_of_month+1).strftime("%Y-%m") %>
-		</h1>
-
-		<%= calendar_for(@activities, year: @date.year, month: @date.month) do |calendar| %>
-
-			<%= calendar.head("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday") %>
-
-			<%= calendar.day do |date, activities| %>
-				
-				<%= date.day %>
-
-				<ul>
-					<% for activity in activities %>
-						<li><%= link_to h(activity.distance), activity %></li>
-					<% end %>
-				</ul>
-			<% end %>
-		<% end %>	
-	</div>
 
 	<% else %>
 
 	<div class="container">
-		<div class="center hero-unit">
+		<div class="center jumbotron">
 			<h1>SecondWind</h1>
 			<h2>
 				Bringing online training logs back to the basics.
 			</h2>
 
-			<%= link_to "Sign up!", signup_path, class: "btn btn-large btn-primary" %>
+			<%= link_to "Get started!", signup_path, class: "btn btn-large btn-primary" %>
 		</div>
 	</div>
 

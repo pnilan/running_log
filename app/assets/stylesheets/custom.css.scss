@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins, variable, etc. */
@@ -89,20 +90,6 @@ p {
 
 /* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #999;
-  letter-spacing: 1px;
-  padding-top: 9px;
-  line-height: 1;
-  &:hover {
-  	color: #999;
-  	text-decoration: none;
-  }
-}
-
 .dropdown-menu-large {
   padding: 15px; 
   padding-bottom: 0px;
@@ -111,9 +98,9 @@ p {
 
 /* content */
 
-.wrap > .container {
-  margin-top: 60px;
-}
+// .wrap > .container {
+//   margin-top: 60px;
+// }
 
 .wrap {
   min-height: 100%;
@@ -308,6 +295,4 @@ form {
     display: inline;
   }
 }
-
-@import "bootstrap-responsive";
 

@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'sass-rails', '>= 3.2'
+gem 'autoprefixer-rails'
 
 
 # Use ActiveModel has_secure_password
@@ -19,19 +21,16 @@ gem 'sprockets', '2.11.0'
 
 group :development, :test do
 	gem 'rspec-rails', '2.13.1'
+	gem 'awesome_print', require: 'ap'
 end
 
 group :test do
-	gem 'guard-rspec', '2.5.0'
-	gem 'capybara', '2.1.0'
-	gem 'factory_girl_rails', '4.2.1'
+	gem 'guard-rspec', '~> 2.5.0'
+	gem 'capybara', '~> 2.1.0'
+	gem 'factory_girl_rails', '~> 4.2.1'
 end
 
-#Twitter bootstrap
-gem 'twitter-bootstrap-rails'
-
 # Asset template engines
-gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 
@@ -56,6 +55,3 @@ end
 group :production do
 	gem 'rails_12factor', '0.0.2'
 end
-
-# TableBuilder to create the dynamic, responsive calendar view of activities
-gem "watu_table_builder", :require => "table_builder"
