@@ -1,11 +1,9 @@
 class StaticPagesController < ApplicationController
+
   def home
-  	if signed_in?
-  		@activities = current_user.activities
-  		@date = params[:month] ? Date.parse("01-#{params[:month]}") : Date.today
-    else
+  	if !signed_in?
       render layout: "landing_page"
-  	end
+    end
   end
 
   def contact

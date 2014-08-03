@@ -9,15 +9,34 @@
 	<% else %>
 
 	<div class="container">
-		<div class="center jumbotron">
-			<h1>SecondWind</h1>
-			<h2>
-				Bringing online training logs back to the basics.
-			</h2>
+		<div class="row">
+			<div class="col-md-12 pitch">
+				<h1>SecondWind</h1>
+				<h2>The elite training log for the elite athlete.</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 col-lg-6 centered">
 
-			<%= link_to "Get started!", signup_path, class: "btn btn-large btn-primary" %>
+				<h1>Start running now!</h1>
+
+				<%= form_for User.new do |f| %>
+
+				<%= f.text_field :username, placeholder: "Username" %>
+
+				<%= f.text_field :email, placeholder: "Email" %>
+	
+				<%= f.password_field :password, placeholder: "Password" %>
+				
+				<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+
+				<%= f.submit "Get Started!", class: "btn btn-large btn-primary" %>
+				<% end %>
+					
+			</div>
 		</div>
 	</div>
+
 
 
 	<% end %>

@@ -1,6 +1,5 @@
 RunningLog::Application.routes.draw do
 
-
   resources :users
   resources :activities
   resources :sessions, only: [:new, :create, :destroy]
