@@ -8,17 +8,22 @@
 
 	<% else %>
 
+	<% provide(:title, 'The Elite Training Log') %>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 pitch">
-				<h1>SecondWind</h1>
+				<div class="logo">
+					<h1>SecondWind</h1>
+					<hr>
+				</div>
 				<h2>The elite training log for the elite athlete.</h2>
+
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-8 col-lg-6 centered">
+			<div class="col-sm-6 col-lg-4 centered">
 
-				<h1>Start running now!</h1>
+				<h1>Start <span>running</span> now!</h1>
 
 				<%= form_for User.new do |f| %>
 

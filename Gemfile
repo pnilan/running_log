@@ -6,6 +6,7 @@ gem 'rails', '4.0.4'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
+gem 'font-awesome-rails'
 
 
 # Use ActiveModel has_secure_password
@@ -22,6 +23,8 @@ gem 'sprockets', '2.11.0'
 group :development, :test do
 	gem 'rspec-rails', '2.13.1'
 	gem 'awesome_print', require: 'ap'
+	gem 'better_errors'
+	gem 'binding_of_caller'
 end
 
 group :test do
