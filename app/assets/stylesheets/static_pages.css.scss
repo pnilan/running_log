@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "base";
+
 // LANDING PAGE
 
 .navbar {
@@ -12,15 +14,25 @@
 .landing {
 	width: 100%;
 	height: 100%;
+	min-height: 100%;
 	background-color: #7f8c8d;
 	background: linear-gradient(-60deg, rgba(56, 56, 56, 0.6), rgba(56, 56, 56, .2)), url(landingbg4.jpg) no-repeat;
 	background-size: cover;
 	max-height: 1000px;
 }
 
+@media (min-width: 768px) { 
+	.pitch {
+		margin: 2rem auto;
+
+		.logo h1 {
+			font-size: 6rem;
+		}
+	}
+}
+
 .pitch {
 	float: none;
-	margin: 2rem auto;
 	height: auto;
 	color: #fff;
 	text-align: center;
@@ -31,7 +43,6 @@
 
 	.logo h1 {
 		font-weight: 100;
-		font-size: 6rem;
 		margin-bottom: 0;
 		color: #fff;
 	}

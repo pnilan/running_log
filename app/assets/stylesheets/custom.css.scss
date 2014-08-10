@@ -1,16 +1,4 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "awesome-font.css";
-
-/* mixins, variable, etc. */
-
-$grayMediumLight: #eaeaea;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
+@import "base";
 
 /* miscellaneous */
 
@@ -22,86 +10,186 @@ $grayMediumLight: #eaeaea;
   @include box_sizing;
 }
 
-/* universal */
-
-* {
-  margin: 0;
-}
-
-html, body {
+#page-wrapper {
+  padding-left: 70px;
   height: 100%;
+}
+
+.alert {
+  margin-bottom: 0;
+}
+
+/* sidebar */
+
+#sidebar-wrapper {
+  background-color: $darkGrey;
+  margin-left: -150px;
+  left: -30px;
+  width: 250px;
+  position: fixed;
+  height: 100%;
+}
+
+ul.sidebar {
+  background-color: $darkGrey;
+  position: absolute;
+  top: 0;
+  bottom: 45px;
+  padding: 0;
   margin: 0;
+  list-style: none;
+  text-indent: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  li a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    width: 250px;
+  }
+
+  .sidebar-logo {
+    height: 60px;
+    background-color: $flatterOrange;
+    text-align: center;
+    text-indent: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    a {
+      font-size: 24px;
+      line-height: 60px;
+      color: #fff;
+    }
+  }
+
+  .sidebar-main {
+    height: 65px;
+
+    a {
+      font-size: 18px;
+      line-height: 60px;
+      color: #fff;
+      background-color: $darkerGrey;
+      }
+
+    .menu-icon {
+      float: right;
+      font-size: 18px;
+      padding-right: 28px;
+      line-height: 60px;
+    }
+  }
+
+  .sidebar-title {
+    font-size: 12px;
+    height: 35px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: $lightDarkGrey;
+  }
+
+  .sidebar-list {
+    height: 40px;
+
+    a {
+      text-indent: 25px;
+      font-size: 15px;
+      color: $lightGrey;
+      line-height: 40px;
+    }
+
+    a:hover {
+      color: #fff;
+      border-left: 3px solid $flatOrange;
+      text-indent: 22px;
+      background-color: $darkerGrey;
+
+      .menu-icon {
+        text-indent: 25px;
+      }
+    }
+
+    .menu-icon {
+      float: right;
+      padding-right: 29px;
+      line-height: 40px;
+      width: 70px;
+    }
+  }
 }
 
-html {
-  overflow-y: scroll;
+.sidebar-footer {
+  position: absolute;
+  height: 45px;
+  bottom: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: $darkerGrey;
+
+  div a {
+    color: $lightGrey;
+    font-size: 12px;
+    line-height: 45px;
+  }
+
+  div a:hover {
+    color: $flatterOrange;
+    text-decoration: none;
+  }
 }
 
-section {
-  overflow: auto;
-}
+  #page-wrapper:not(.active) {
+    ul.sidebar {
+      bottom: 0;
 
-textarea {
-  resize: vertical;
-}
+      .sidebar-list a:hover i {
+        border-left: 3px solid $flatOrange;
+        text-indent: 22px;
+      }
+    }
+    
+    .sidebar-logo {
+      height: 60px;
 
-.right {
-  float: right;
-}
+      a {
+        display: none;
+        line-height: 60px;
+      }
+    }
 
-.left {
-  float: left;
-}
+    .sidebar-title {
+      display: none;
+    }
 
+    .sidebar-footer {
+      display: none;
+    }
 
+  }
+
+  #page-wrapper, #sidebar-wrapper {
+    transition: all .1s ease 0s;
+  }
 
 /* content */
 
-// .wrap > .container {
-//   margin-top: 60px;
-// }
-
-.wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  /* Negative indent footer by its height */
-  margin: 0 auto -40px;
+#content-wrapper {
+  padding-left: 0;
+  margin-left: 0;
+  width: 100%;
+  height: auto;
 }
 
-/* footer */
-
-/* Set the fixed height of the footer here */
-footer, .push {
-  height: 40px;
+#page-wrapper.active {
+  padding-left: 250px;
 }
 
-footer {
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
-}
-
-footer a {
-  color: #555;
-}
-
-footer a:hover {
-  color: #222;
-}
-
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-footer ul li {
-  float: left;
-  margin-left: 10px;
+#page-wrapper.active #sidebar-wrapper {
+  left: 150px;
 }
 
 /* forms */

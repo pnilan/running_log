@@ -1,0 +1,58 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+// @import "awesome-font.css";
+
+/* mixins, variable, etc. */
+
+@mixin box_sizing {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+$lighterGrey: #e6e6e6;
+$lightGrey: #cfcfcf;
+$darkGrey: #333333;
+$darkerGrey: #282828;
+$lightDarkGrey: #808080;
+
+$flatBlue: #3997e9;
+
+$flatOrange: #e98b39;
+$flatterOrange: #d67118;
+
+$flatYellow: #E9AF32;
+$flatRed: #BF381A;
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	overflow-y:scroll;
+}
+
+body {
+	background: $lighterGrey;
+	font-family: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+html, body {
+	height: 100%;
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
+
+	> div {
+		margin-bottom: 15px;
+	}
+}
+
+
+
+
+
+

@@ -4,7 +4,9 @@
   
   <title><%= full_title(yield(:title)) %></title>
   
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,300,400,600,700", media: "all" %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
@@ -13,37 +15,99 @@
 </head>
 <body>
 
+<div id="page-wrapper" class="active">
+
 <!-- Sidebar -->
-  
+  <div id="sidebar-wrapper">
+    <ul class="sidebar">
+      <li class="sidebar-logo">
+        <a href="#">
+          SecondWind
+        </a>
+      </li>
+      <li class="sidebar-main">
+        <a href="#" id="toggle">
+          Dashboard
+          <span class=" menu-icon fa fa-exchange"></span>
+        </a>
+      </li>
+      <li class="sidebar-title"><span>Navigation</span></li>
+      <li class="sidebar-list">
+        <%= link_to "#" do %>
+          Home
+          <i class="menu-icon fa fa-home"></i>
+        <% end %>
+      </li>
+      <li class="sidebar-list">
+        <%= link_to "#" do %>
+          Calendar
+          <i class="menu-icon fa fa-calendar-o"></i>
+        <% end %>
+      </li>
+      <li class="sidebar-list">
+        <%= link_to "#" do %>
+          Analysis
+          <i class="menu-icon fa fa-signal"></i>
+        <% end %>
+      </li>
+      <li class="sidebar-list">
+        <%= link_to "#" do %>
+          Routes
+          <i class="menu-icon fa fa-road"></i>
+        <% end %>
+      </li>
+      <li class="sidebar-list">
+        <%= link_to "#" do %>
+          Shoes
 
-
-
-
-
-
-
-
-
-
-    <!-- Page content -->
-    <div class="container">
-     <% flash.each do |key, value| %>
-     <div class="alert alert-<%= key %>"><%= value %>
-      <a class="close" data-dismiss="alert">&#215;</a>
+          <i class="menu-icon fa fa-paw"></i>
+        <% end %>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="col-xs-4">
+        <%= link_to "About", "#" %>
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "Support", "#" %>
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "Donate", "#" %>
+      </div>
     </div>
-    <% end %>
+  </div>
+<!-- End Sidebar -->
 
-    <%= yield %> 
+<div class="" id="content-wrapper">
+  <div class="page-content">
 
-    <%= debug(params) if Rails.env.development? %>
-    </div>
-    <div class="push"></div>
+<!-- Header Bar -->
+
+<div class="row header">
+  <div class="col-xs-12">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, fugit amet ullam dolores labore quos delectus fuga, itaque error commodi facilis, dolorum accusantium ut ratione eaque, ab nam corporis sit?
+  </div>
 </div>
 
 
 
 
 
+    <!-- Page content -->
+    <div class="container" style="float: right">
+     <% flash.each do |key, value| %>
+     <div class="alert alert-<%= key %>"><%= value %>
+      <a class="close" data-dismiss="alert">&#215;</a>
+    </div>
+    <% end %>
 
+ 
+
+    <%= debug(params) if Rails.env.development? %>
+    </div>
+
+    </div><!-- End Page Content -->
+  </div><!-- End Content Wrapper -->
+</div><!-- End Page Wrapper -->
 </body>
 </html>
