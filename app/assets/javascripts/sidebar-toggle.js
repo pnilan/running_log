@@ -41,4 +41,6 @@ $(document).ready(function() {
 		$('#page-wrapper').toggleClass('active');
 		$.cookie('toggle', $('#page-wrapper').hasClass('active'));
 	});
+
+	$('.dropdown-toggle').dropdown();
 });

@@ -59,7 +59,6 @@
       <li class="sidebar-list">
         <%= link_to "#" do %>
           Shoes
-
           <i class="menu-icon fa fa-paw"></i>
         <% end %>
       </li>
@@ -85,7 +84,40 @@
 
 <div class="row header">
   <div class="col-xs-12">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, fugit amet ullam dolores labore quos delectus fuga, itaque error commodi facilis, dolorum accusantium ut ratione eaque, ab nam corporis sit?
+    <div class="header-add pull-left">
+      <%= link_to new_activity_path do %>
+          Add Activity
+          <i class="fa fa-plus-circle"></i>
+      <% end %>
+    </div>
+    <div class="user pull-right">
+      <div class="item dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <%= current_user.name %>
+          <%= gravatar_for(current_user, size: 50) %>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li class="dropdown-header">
+              <%= current_user.name %>
+            </li>
+            <li class="divider"></li>
+            <li class="link">
+              <a href="#">
+                Profile
+              </a>
+            </li>
+            <li class="link">
+              <a href="#">
+                Account
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li class="link">
+              <%= link_to 'Sign out', signout_path, method: 'delete' %>
+            </li>
+          </ul>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -94,12 +126,14 @@
 
 
     <!-- Page content -->
-    <div class="container" style="float: right">
+    <div class="container">
      <% flash.each do |key, value| %>
      <div class="alert alert-<%= key %>"><%= value %>
       <a class="close" data-dismiss="alert">&#215;</a>
     </div>
     <% end %>
+
+    <%= yield %>
 
  
 

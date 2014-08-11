@@ -15,5 +15,4 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-//= require bootstrap.min
 //= require jquery.cookie

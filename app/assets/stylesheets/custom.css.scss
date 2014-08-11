@@ -4,7 +4,6 @@
 
 .debug_dump {
   clear: both;
-  float: left;
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
@@ -142,38 +141,85 @@ ul.sidebar {
   }
 }
 
-  #page-wrapper:not(.active) {
-    ul.sidebar {
-      bottom: 0;
-
-      .sidebar-list a:hover i {
-        border-left: 3px solid $flatOrange;
-        text-indent: 22px;
-      }
+#page-wrapper:not(.active) {
+  ul.sidebar {
+    bottom: 0;
+    .sidebar-list a:hover i {
+      border-left: 3px solid $flatOrange;
+      text-indent: 22px;
     }
-    
-    .sidebar-logo {
-      height: 60px;
-
-      a {
-        display: none;
-        line-height: 60px;
-      }
-    }
-
-    .sidebar-title {
+  }
+  
+  .sidebar-logo {
+    height: 60px;
+    a {
       display: none;
+      line-height: 60px;
     }
+  }
+  .sidebar-title {
+    display: none;
+  }
+  .sidebar-footer {
+    display: none;
+  }
+}
 
-    .sidebar-footer {
-      display: none;
-    }
+#page-wrapper, #sidebar-wrapper {
+  transition: all .1s ease 0s;
+}
 
+#page-wrapper.active {
+  padding-left: 250px;
+}
+
+#page-wrapper.active #sidebar-wrapper {
+  left: 150px;
+}
+
+/* header */
+
+.row.header {
+  height: 60px;
+  background-color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.header-add {
+  line-height: 60px;
+
+  a {
+    font-size: 18px;
+    color: $flatBlue;
+    text-transform: uppercase;
   }
 
-  #page-wrapper, #sidebar-wrapper {
-    transition: all .1s ease 0s;
+  a:hover {
+    text-decoration: none;
+    color: darken( $flatBlue, 20% );
   }
+}
+
+
+.item {
+  line-height: 60px;
+
+  a, a:focus {
+    color: $lightDarkGrey;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: darken( $lightDarkGrey, 20% );
+    text-decoration: none;
+  }
+}
+
+.gravatar {
+  margin-left: 5px;
+  border-radius: 50%;
+}
 
 /* content */
 
@@ -184,13 +230,8 @@ ul.sidebar {
   height: auto;
 }
 
-#page-wrapper.active {
-  padding-left: 250px;
-}
 
-#page-wrapper.active #sidebar-wrapper {
-  left: 150px;
-}
+
 
 /* forms */
 
