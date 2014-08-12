@@ -1,3 +1,24 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.widget {
+  height: 150px;
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.widget-body {
+	padding: 20px 20px 5px 20px;
+	font-size: 84px;
+	line-height: 75px;
+	text-align: center;
+	font-weight: 200;
+}
+
+.widget-label {
+	font-size: 24px;
+	line-height: 40px;
+	text-align: center;
+}

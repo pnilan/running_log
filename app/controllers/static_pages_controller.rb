@@ -1,10 +1,9 @@
 class StaticPagesController < ApplicationController
+layout "landing_page"
 
   def home
   	if signed_in?
-  		render layout: "application"
-  	else
-     	render layout: "landing_page"
+  		redirect_to controller: "dashboard", action: "index"
   	end
   end
 

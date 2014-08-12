@@ -1,12 +1,4 @@
 
-<% if signed_in? %>
-
-<div class="container">
-		<%= link_to "Add an activity", new_activity_path, class: "btn btn-large btn-primary center" %>
-		<%= link_to "Sign out", signout_path, method: "delete", class: "btn btn-large btn-primary center"  %>
-</div>
-
-	<% else %>
 
 	<% provide(:title, 'The Elite Training Log') %>
 	<div class="container">
@@ -26,16 +18,16 @@
 				<h1>Start <span>running</span> now!</h1>
 
 				<%= form_for User.new do |f| %>
-3
-				<%= f.text_field :username, placeholder: "Username" %>
 
-				<%= f.text_field :email, placeholder: "Email" %>
+					<%= f.text_field :username, placeholder: "Username" %>
 	
-				<%= f.password_field :password, placeholder: "Password" %>
-				
-				<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
-
-				<%= f.submit "Get Started!", class: "btn btn-large btn-primary" %>
+					<%= f.text_field :email, placeholder: "Email" %>
+		
+					<%= f.password_field :password, placeholder: "Password" %>
+					
+					<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+	
+					<%= f.submit "Get Started!", class: "btn btn-large btn-primary" %>
 				<% end %>
 					
 			</div>
@@ -44,4 +36,3 @@
 
 
 
-	<% end %>

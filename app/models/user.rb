@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 	end
 
 	def feed
-		activities		
+		# activities		
 	end
 
 	private
