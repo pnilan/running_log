@@ -77,68 +77,71 @@
   </div>
 <!-- End Sidebar -->
 
-<div class="" id="content-wrapper">
-  <div class="page-content">
+  <div class="" id="content-wrapper">
+    <div class="page-content">
 
 <!-- Header Bar -->
 
-<div class="row header">
-  <div class="col-xs-12">
-    <div class="header-add pull-left">
-      <%= link_to new_activity_path do %>
-          Add Activity
-          <i class="fa fa-plus-circle"></i>
-      <% end %>
-    </div>
-    <div class="user pull-right">
-      <div class="item dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <%= current_user.name %>
-          <%= gravatar_for(current_user, size: 50) %>
-          <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li class="dropdown-header">
-              <%= current_user.name %>
-            </li>
-            <li class="divider"></li>
-            <li class="link">
-              <a href="#">
-                Profile
+      <div class="row header">
+        <div class="col-xs-12">
+          <div class="header-add pull-left">
+            <%= link_to new_activity_path do %>
+                Add Activity
+                <i class="fa fa-plus-circle"></i>
+            <% end %>
+          </div>
+          <div class="user pull-right">
+            <div class="item dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= current_user.name %>
+                <%= gravatar_for(current_user, size: 50) %>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                  <li class="dropdown-header">
+                    <%= current_user.name %>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="#">
+                      Profile
+                    </a>
+                  </li>
+                  <li class="link">
+                    <a href="#">
+                      Account
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <%= link_to 'Sign out', signout_path, method: 'delete' %>
+                  </li>
+                </ul>
               </a>
-            </li>
-            <li class="link">
-              <a href="#">
-                Account
-              </a>
-            </li>
-            <li class="divider"></li>
-            <li class="link">
-              <%= link_to 'Sign out', signout_path, method: 'delete' %>
-            </li>
-          </ul>
-        </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
+<!-- Page content -->
 
+      <div class="row">
+        <div class="col-xs-12">
+          <% flash.each do |name, msg| %>
+            <% if msg.is_a?(String) %>
+              <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
+                <%= content_tag :div, msg, id: "flash_#{name}" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
 
-
-
-    <!-- Page content -->
-    <div class="container">
-     <% flash.each do |key, value| %>
-     <div class="alert alert-<%= key %>"><%= value %>
-      <a class="close" data-dismiss="alert">&#215;</a>
-    </div>
-    <% end %>
-
-    <%= yield %>
+      <%= yield %>
 
  
 
-    <%= debug(params) if Rails.env.development? %>
-    </div>
+      <%= debug(params) if Rails.env.development? %>
+    
 
     </div><!-- End Page Content -->
   </div><!-- End Content Wrapper -->

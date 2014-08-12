@@ -4,6 +4,7 @@ RunningLog::Application.routes.draw do
   resources :activities
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
+  resources :dashboard, only: [:index]
 
   root 'static_pages#home'
   match '/contact', to: 'static_pages#contact', via: 'get'
