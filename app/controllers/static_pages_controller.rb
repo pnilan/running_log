@@ -3,8 +3,7 @@ layout "landing_page"
 
   def home
   	if signed_in?
-  		# redirect_to controller: "dashboard", action: "index"
-  		redirect_to dashboard_index_path
+  		redirect_to dashboard_home_path
   	end
   end
 

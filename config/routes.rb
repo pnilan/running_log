@@ -4,7 +4,6 @@ RunningLog::Application.routes.draw do
   resources :activities
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
-  resources :dashboard, only: [:index]
 
   root 'static_pages#home'
   match '/contact', to: 'static_pages#contact', via: 'get'
@@ -16,6 +15,9 @@ RunningLog::Application.routes.draw do
 
   match '/passwordreset', to: "password_resets#new", via: 'get'
 
+  match '/dashboard/home', to: 'dashboard#index', via: 'get'
+  match '/dashboard/calendar', to: 'dashboard#calendar', via: 'get'
+  match '/dashboard/analysis', to: 'dashboard#analysis', via: 'get'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

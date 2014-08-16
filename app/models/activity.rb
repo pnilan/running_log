@@ -2,6 +2,9 @@ require 'chronic'
 require 'chronic_duration'
 
 class Activity < ActiveRecord::Base
+	extend SimpleCalendar
+	has_calendar
+	
 	before_save :parse_duration, :parse_pace
 
 	belongs_to :user

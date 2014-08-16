@@ -3,29 +3,35 @@
 // You can use CoffeeScript in this file: http://coffeescript.org/
 
 function updatePace() {
+	// Defines form input elements
 	$distanceInput = $('[name="activity[distance]"]');
 	$durationInput = $('[name="activity[duration]"]');
 	$paceInput = $('[name="activity[pace]"]');
 
+	// Check if distance input is a number, if it exists, and if the duration input exists
 	if ( $.isNumeric($distanceInput.val()) && $distanceInput.val() && $durationInput.val() ) {
 
 		distance = parseFloat($distanceInput.val());
-		parsed = $durationInput.val().split(":")
+		parsedDuration = $durationInput.val().split(":")
 
-		if ( parsed.length === 3 ) {
-			seconds = (+parsed[0]) * 3600 + (+parsed[1]) * 60 + (+parsed[2]);
-		} else if ( parsed.length === 2 ) {
-			seconds = (+parsed[0]) * 60 + (+parsed[1]);
-		} else if ( parsed.length === 1 ) {
-			seconds = (+parsed[0]);
+		// Checks length of duration input based on the hh:mm:ss format.
+		if ( parsedDuration.length === 3 ) {
+			secondsDuration = (+parsedDuration[0]) * 3600 + (+parsedDuration[1]) * 60 + (+parsedDuration[2]);
+		} else if ( parsedDuration.length === 2 ) {
+			secondsDuration = (+parsedDuration[0]) * 60 + (+parsedDuration[1]);
+		} else if ( parsedDuration.length === 1 ) {
+			secondsDuration = (+parsedDuration[0]);
 		} else {
 			console.log('Incorrect input entered in activity[duration]');
 		}
 
-		pace = seconds/distance;
+		// Calculates mile pace, [s/mile]
+		pace = secondsDuration / distance;
+
+		// Converts pace to mm:ss format
 		paceArray = [];
-		paceArray.push(String(Math.floor(pace/60)));
-		paceSeconds = parseInt(pace % 60);
+		paceArray.push(String(Math.floor(pace / 60)));
+		paceSeconds = Math.round((pace % 60)*10)/10;
 		if ( paceSeconds < 10 ) {
 			paceArray.push("0" + String(paceSeconds));
 		} else {
@@ -33,14 +39,16 @@ function updatePace() {
 		}
 		paceString = paceArray.join(':');
 		
+		// Sets the pace form input as to the calculated value and disables the input
 		$paceInput.val(paceString);
 		$paceInput.attr('readonly', true);
 
 
 	} else {
+		// resets the pace form input
 		$paceInput.val(null);
 		$paceInput.attr('readonly', false);
-		console.log('activity[distance] does not exist or is not numeric.');
+		console.log('activity[distance] or activity[duration] is invalid.');
 	}
 }
 

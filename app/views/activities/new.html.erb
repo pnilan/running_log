@@ -1,27 +1,21 @@
 <% provide(:title, 'Add an Activity') %>
 
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="col-xs-6 col-xs-offset-3">
-			<h1 class="activity-heading">Add an Activity</h1>
-		</div>
-	</div>
-</div>
-
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12">
 			<%= render 'shared/error_messages' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="activity-heading">Add an Activity</h1>
 		</div>
 	</div>
 
 		<%= form_for(@activity) do |f| %>
 
 			<div class="row">
-				<div class="col-md-2 col-md-offset-3">
+				<div class="col-md-3 col-md-offset-3">
 					<div class="form-group">
 						<%= f.label :date, "Activity date" %>
 						<%= f.date_field :date, value: Date.today, class: "form-control" %> 
@@ -70,7 +64,7 @@
 
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					<%= f.submit "Add new activity!", class: "btn btn-primary" %>
+					<%= f.submit "Log it!", class: "btn btn-primary" %>
 				</div>
 			</div>
 

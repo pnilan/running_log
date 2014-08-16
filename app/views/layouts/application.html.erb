@@ -33,19 +33,19 @@
       </li>
       <li class="sidebar-title"><span>Navigation</span></li>
       <li class="sidebar-list">
-        <%= link_to controller: "dashboard", action: "index" do %>
+        <%= link_to dashboard_home_path do %>
           Home
           <i class="menu-icon fa fa-home"></i>
         <% end %>
       </li>
       <li class="sidebar-list">
-        <%= link_to "#" do %>
+        <%= link_to dashboard_calendar_path do %>
           Calendar
           <i class="menu-icon fa fa-calendar-o"></i>
         <% end %>
       </li>
       <li class="sidebar-list">
-        <%= link_to "#" do %>
+        <%= link_to dashboard_analysis_path do %>
           Analysis
           <i class="menu-icon fa fa-signal"></i>
         <% end %>
@@ -129,8 +129,12 @@
       <%= yield %>
 
  
+    <div class="container-fluid">
+      <div class="col-xs-12">
+        <%= debug(params) if Rails.env.development? %>        
+      </div>
+    </div>
 
-      <%= debug(params) if Rails.env.development? %>
     
 
     </div><!-- End Page Content -->

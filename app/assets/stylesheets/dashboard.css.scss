@@ -27,3 +27,54 @@
 	line-height: 40px;
 	text-align: center;
 }
+
+// Dashboard calendar
+
+.calendar-header {
+	text-align: center;
+	margin-bottom: 5px;
+
+	span {
+		font-size: 24px;
+		line-height: 24px;
+
+	}
+	a {
+		font-size: 32px;
+		color: $flatOrange;
+		font-weight: 500;
+		text-decoration: none;
+		line-height: 20px;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	a:hover {
+		text-decoration: none;
+		color: darken( $flatOrange, 20% );
+	}
+}
+
+.calendar {
+	width: 100%;
+
+	th {
+		text-align: center;
+	}
+
+	td {
+		border: 1px solid black;
+		height: 100px;
+	}
+
+	td.today {
+		solid: 2px solid black;
+	}
+}
+
+.current-month {
+	background-color: $lighterGrey;
+}
+
+.prev-month, .next-month {
+	background-color: $lightDarkGrey;
+}

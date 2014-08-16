@@ -7,4 +7,14 @@ class DashboardController < ApplicationController
   	@distance_this_month = Activity.distance_this_month(@user)
   end
 
+  def calendar
+    @user = current_user
+    # @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    @activities = Activity.all
+  end
+
+  def analysis
+
+  end
+
 end
