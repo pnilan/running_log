@@ -1,10 +1,11 @@
+require 'chronic_duration'
+
 class ActivitiesController < ApplicationController
 before_action :signed_in_user, only: [:create, :destroy, :edit, :update, :index]
 before_action :correct_user, only: [:destroy, :edit, :update]
 
   def index
     @activities = Activity.all
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
   
   def new
@@ -15,7 +16,7 @@ before_action :correct_user, only: [:destroy, :edit, :update]
   	@activity = current_user.activities.build(activity_params)
   	if @activity.save
   		flash[:success] = "New activity added!"
-  	  redirect_to root_url
+  	  redirect_to dashboard_index_path
     else
       render 'new'
     end
@@ -50,6 +51,6 @@ before_action :correct_user, only: [:destroy, :edit, :update]
 
   	def correct_user
   		@activity = current_user.activities.find_by(id: params[:id])
-  		redirect_to root_url if @micropost.nil?
+  		redirect_to dashboard_index_path if @activity.nil?
   	end
 end

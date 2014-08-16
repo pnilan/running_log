@@ -7,7 +7,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
-
+gem 'chronic'
+gem 'chronic_duration'
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'

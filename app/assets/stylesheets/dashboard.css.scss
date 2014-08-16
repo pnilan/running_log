@@ -2,11 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "base";
+
 .widget {
   height: 150px;
   background: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
+  background-color: $lighterGrey;
 }
 
 .widget-body {
@@ -14,10 +17,12 @@
 	font-size: 84px;
 	line-height: 75px;
 	text-align: center;
-	font-weight: 200;
+	font-weight: 600;
+	color: $flatOrange;
 }
 
 .widget-label {
+	font-weight: 200;
 	font-size: 24px;
 	line-height: 40px;
 	text-align: center;

@@ -1,58 +1,78 @@
 <% provide(:title, 'Add an Activity') %>
 
-<h1>Add an Activity</h1>
 
-<div class="row">
-	<div class="span9 offset3">
-		<%= render 'shared/error_messages' %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-3">
+			<h1 class="activity-heading">Add an Activity</h1>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<%= render 'shared/error_messages' %>
+		</div>
+	</div>
+
 		<%= form_for(@activity) do |f| %>
 
-		<div class="row">
-			<div class="span3">
-				<%= f.label :date, "Activity date" %>
-				<%= f.date_field :date, value: Date.today %> 
-			</div>
-			<div class="span2">
-				<%= f.label :type_id, "Activity type" %>
-				<%= f.collection_select :type_id, Type.all, :id, :name, {include_blank: "Select a type"} %>				
-			</div>
-		</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-3">
+					<div class="form-group">
+						<%= f.label :date, "Activity date" %>
+						<%= f.date_field :date, value: Date.today, class: "form-control" %> 
+					</div>
+				</div>
 
-		<div class="row">
-			<div class="span3">
-					<%= f.label :distance, "Distance" %>
-					<%= f.text_field :distance , class: "inline-input" %>			
+				<div class="col-md-2">
+					<div class="form-group">
+						<%= f.label :type_id, "Activity type" %>
+						<%= f.collection_select :type_id, Type.all, :id, :name, {include_blank: "Select a type"}, class: "form-control" %>
+					</div>
+				</div>
 			</div>
-		</div>
-		
-		<div class="row">	
-			<div class="span1">
-					<%= f.label :duration, "Duration" %>
-					<%= f.text_field :duration_hr, placeholder: "hr", class: "inline-input" %>	
-			</div>
-			<div class="span1">
-				<%= f.text_field :duration_min, placeholder: "min", class: "inline-input" %>
-			</div>
-			<div class="span1">
-				<%= f.text_field :duration_sec, placeholder: "sec", class: "inline-input" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="span2">
-					<%= f.label :pace, "Pace" %>
-					<%= f.text_field :pace, class: "inline-input" %>			
-			</div>
-		</div>
-		
-		<div class="row">
-	
-			<div class="span4">
-					<%= f.label :content, "Notes" %>
-					<%= f.text_area :content, class: "activity-content" %>
-			</div>
-		</div>
+						
+			<div class="row">			
+				<div class="col-md-2 col-md-offset-3">
+					<div class="form-group">
+						<%= f.label :distance, "Distance" %>
+						<%= f.text_field :distance, placeholder: "Miles", class: "form-control"  %>
+					</div>
+				</div>
 
-			<%= f.submit "Add new activity!", class: "btn btn-large btn-primary" %>
+				<div class="col-md-2">
+					<div class="form-group">
+						<%= f.label :duration, "Duration" %>
+						<%= f.text_field :duration, placeholder: "hh:mm:ss", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<%= f.label :pace, "Pace" %>
+						<%= f.text_field :pace, class: "form-control" %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="form-group">
+						<%= f.label :content, "Notes" %>
+						<%= f.text_area :content, class: "form-control" %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<%= f.submit "Add new activity!", class: "btn btn-primary" %>
+				</div>
+			</div>
+
 		<% end %>
-	</div>
 </div>

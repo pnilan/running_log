@@ -77,7 +77,7 @@
   </div>
 <!-- End Sidebar -->
 
-  <div class="" id="content-wrapper">
+  <div id="content-wrapper">
     <div class="page-content">
 
 <!-- Header Bar -->
@@ -93,11 +93,11 @@
           <div class="user pull-right">
             <div class="item dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= @user.name %>
-                <%= gravatar_for(@user, size: 50) %>
+                <%= current_user.name %>
+                <%= gravatar_for(current_user, size: 50) %>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
                   <li class="dropdown-header">
-                    <%= @user.name %>
+                    <%= current_user.name %>
                   </li>
                   <li class="divider"></li>
                   <li class="link">
