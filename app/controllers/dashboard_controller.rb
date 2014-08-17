@@ -9,8 +9,8 @@ class DashboardController < ApplicationController
 
   def calendar
     @user = current_user
-    # @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    @activities = Activity.all
+    @activities = @user.activities
+    @types = Type.all
   end
 
   def analysis

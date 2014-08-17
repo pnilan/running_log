@@ -1,8 +1,18 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12">
-			<%= month_calendar table: {class: "calendar"}, tr: {class: "calendar-row"}, day_names: "date.day_names" do |date| %>
-			  <%= date %>
+			<%= month_calendar events: @activities, table: {class: "calendar"}, tr: {class: "calendar-row"}, day_names: "date.day_names" do |date, activities| %>
+			  
+			  <div class="date-day">
+			  	<%= date.day %>
+			  </div>
+			  
+
+			  <% activities.each do |activity| %>
+			  	<div class="activity-item">
+			  		<%= @types.find(activity.type_id).name %> / <%= activity.distance %> miles / <%= activity.chrono_duration %>
+			  	</div>
+			  <% end %>
 			<% end %>
 		</div>
 	</div>

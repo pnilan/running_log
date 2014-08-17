@@ -3,7 +3,9 @@ require 'chronic_duration'
 
 class Activity < ActiveRecord::Base
 	extend SimpleCalendar
-	has_calendar
+	has_calendar attribute: "date"
+
+
 	
 	before_save :parse_duration, :parse_pace
 
@@ -36,9 +38,9 @@ class Activity < ActiveRecord::Base
 
 	def self.distance_this_week(current_user)
 		distance = 0
-		activ = Activity.where('user_id= ? AND date >= ?', current_user.id, Chronic.parse('last monday'))
+		activities = Activity.where('user_id= ? AND date >= ?', current_user.id, Chronic.parse('last monday'))
 
-		activ.each do |activity|
+		activities.each do |activity|
 			if activity.distance != nil
 				distance += activity.distance
 			end
@@ -48,13 +50,17 @@ class Activity < ActiveRecord::Base
 
 	def self.distance_this_month(current_user)
 		distance = 0
-		activities_this_month = Activity.where('user_id= ? AND date >= ?', current_user.id, Chronic.parse('the first of this month'))
+		activities = Activity.where('user_id= ? AND date >= ?', current_user.id, Chronic.parse('the first of this month'))
 
-		activities_this_month.each do |activity|
+		activities.each do |activity|
 			if activity.distance != nil
 				distance += activity.distance
 			end
 		end
 		distance
+	end
+
+	def chrono_duration
+		ChronicDuration.output(self.duration, format: :chrono)
 	end
 end

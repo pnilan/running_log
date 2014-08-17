@@ -64,11 +64,33 @@
 	td {
 		border: 1px solid black;
 		height: 100px;
+		width: 14.285%;
+		vertical-align: initial;
 	}
 
 	td.today {
-		solid: 2px solid black;
+		border: 2px solid black;
 	}
+}
+
+.date-day {
+	display: block;
+	text-align: left;
+	margin: 0;
+	font-size: 16px;
+	padding-left: 5px;
+	padding-top: 5px;
+	@include box-sizing;
+}
+
+.activity-item {
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+	border-radius: 5px;
+	background-color: $flatOrange;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .current-month {

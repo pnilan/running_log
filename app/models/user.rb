@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
 		UserMailer.password_reset(self).deliver
 	end
 
-	def feed
-		# activities		
+	def activities
+		Activity.where('user_id = ?', id)		
 	end
 
 	private
@@ -49,6 +49,6 @@ class User < ActiveRecord::Base
 		end
 
 		def create_password_reset_token
-			self.password_reset_token = User.digest(User.new_token)		
+			self.password_reset_token = User.digest(User.new_token)	
 		end
 end

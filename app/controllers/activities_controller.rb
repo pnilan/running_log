@@ -16,7 +16,7 @@ before_action :correct_user, only: [:destroy, :edit, :update]
   	@activity = current_user.activities.build(activity_params)
   	if @activity.save
   		flash[:success] = "New activity added!"
-  	  redirect_to dashboard_index_path
+  	  redirect_to dashboard_home_path
     else
       render 'new'
     end
