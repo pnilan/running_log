@@ -34,6 +34,7 @@ group :test do
 	gem 'guard-rspec', '~> 2.5.0'
 	gem 'capybara', '~> 2.1.0'
 	gem 'factory_girl_rails', '~> 4.2.1'
+	gem 'simplecov', require: false
 end
 
 # Asset template engines
