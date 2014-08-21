@@ -14,9 +14,9 @@ def sign_in(user, options={})
 		cookies[:remember_token] = remember_token
 		user.update_attribute(:remember_token, User.digest(remember_token))
 	else
-		visit signin_path
-		fill_in "email_signin", 	with: user.email.upcase
-		fill_in "password_signin",  with: user.password
-		click_button "signin_button"
+		visit root_url
+		fill_in "session[email]", 	with: user.email.upcase
+		fill_in "session[password]",  with: user.password
+		click_button 'submit_header'
 	end
 end

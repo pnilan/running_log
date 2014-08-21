@@ -1,19 +1,20 @@
 require 'chronic_duration'
 
 class ActivitiesController < ApplicationController
-before_action :signed_in_user, only: [:create, :destroy, :edit, :update, :index]
-before_action :correct_user, only: [:destroy, :edit, :update]
+before_action :signed_in_user, only: [:new, :create, :destroy, :edit, :update, :index]
+before_action :correct_user, only: [:destroy, :edit, :update, :update]
 
   def index
     @activities = Activity.all
   end
   
   def new
-    @activity = Activity.new
+    @activity = Activity.new(params[:id])
   end
 
   def create  	
   	@activity = current_user.activities.build(activity_params)
+    @activity.user_id = current_user.id
   	if @activity.save
   		flash[:success] = "New activity added!"
   	  redirect_to dashboard_home_path
@@ -38,19 +39,19 @@ before_action :correct_user, only: [:destroy, :edit, :update]
   def destroy
   	@activity.destroy
   	flash[:notice] = "Activity deleted."
-  	redirect_to root_url  	
+  	redirect_to dashboard_home_path  	
   end
 
   private
 
   	def activity_params
-  		params.require(:activity).permit(:date, :distance, :duration, :pace, :content, :calories, :type_id)
+  		params.require(:activity).permit(:date, :distance, :duration, :pace, :content, :type_id)
   	end
 
   	# Before filters
 
   	def correct_user
   		@activity = current_user.activities.find_by(id: params[:id])
-  		redirect_to dashboard_index_path if @activity.nil?
+  		redirect_to dashboard_home_path if @activity.nil?
   	end
 end

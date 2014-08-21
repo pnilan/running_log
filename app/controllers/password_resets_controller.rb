@@ -1,5 +1,7 @@
 class PasswordResetsController < ApplicationController
 
+  layout 'landing_page'
+
   def create
   	user = User.find_by_email(params[:email])
   	user.send_password_reset if user

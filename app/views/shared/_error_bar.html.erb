@@ -1,12 +1,14 @@
-<div class="row">
-  <div class="col-xs-12">
-    <% flash.each do |name, msg| %>
-      <% if msg.is_a?(String) %>
-        <div class="alert alert-dismissable alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
-          <%= content_tag :div, msg, id: "flash_#{name}" %>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-dismissable alert-<%= name.to_s %>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
+            <%= content_tag :div, msg %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

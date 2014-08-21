@@ -90,7 +90,9 @@
                 <i class="fa fa-plus-circle"></i>
             <% end %>
           </div>
+
           <div class="user pull-right">
+            <% if signed_in? %>
             <div class="item dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_user.name %>
@@ -101,14 +103,10 @@
                   </li>
                   <li class="divider"></li>
                   <li class="link">
-                    <a href="#">
-                      Profile
-                    </a>
+                    <%= link_to "Profile", user_path(current_user.id) %>
                   </li>
                   <li class="link">
-                    <a href="#">
-                      Account
-                    </a>
+                    <%= link_to "Settings", edit_user_path(current_user.id) %>
                   </li>
                   <li class="divider"></li>
                   <li class="link">
@@ -117,6 +115,7 @@
                 </ul>
               </a>
             </div>
+            <% end %>
           </div>
         </div>
       </div>

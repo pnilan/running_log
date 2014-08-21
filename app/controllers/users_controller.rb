@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   
+  layout 'landing_page', only: [:new]
+
   def show
   	@user = User.find(params[:id])
   end
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
       flash[:success] = "Welcome to SecondWind!"
-  		redirect_to root_url
+  		redirect_to dashboard_home_path
   	else
   		render 'new'
   	end
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
       redirect_to users_url
     else
       flash[:success] = "Account successfully deleted."
-      redirect_to root_url
+      redirect_to dashboard_home_path
     end
   end
 
@@ -56,6 +58,6 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)      
+      redirect_to(dashboard_home_path) unless current_user?(@user)      
     end
 end

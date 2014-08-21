@@ -10,7 +10,7 @@
 
 			  <% activities.each do |activity| %>
 			  	<div class="activity-item">
-			  		<%= @types.find(activity.type_id).name %> / <%= activity.distance %> miles / <%= activity.chrono_duration %>
+			  		<%= @types.find(activity.type_id).name %> <% if activity.distance? %>/ <%= activity.distance %> miles <% end %> <% if activity.duration? %> / <%= activity.chrono_duration %> <% end %>
 			  	</div>
 			  <% end %>
 			<% end %>

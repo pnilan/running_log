@@ -17,11 +17,15 @@ class Activity < ActiveRecord::Base
 	validates :content, length: { maximum: 1000 }
 
 	def parse_duration
-		self.duration = ChronicDuration.parse(self.duration_before_type_cast)
+		if self.duration
+			self.duration = ChronicDuration.parse(self.duration_before_type_cast)
+		end
 	end
 
 	def parse_pace
-		self.pace = ChronicDuration.parse(self.pace_before_type_cast)
+		if self.pace
+			self.pace = ChronicDuration.parse(self.pace_before_type_cast)
+		end
 	end
 
 	def self.distance_today(current_user)
@@ -61,6 +65,8 @@ class Activity < ActiveRecord::Base
 	end
 
 	def chrono_duration
-		ChronicDuration.output(self.duration, format: :chrono)
+		if self.duration
+			ChronicDuration.output(self.duration, format: :chrono)
+		end
 	end
 end

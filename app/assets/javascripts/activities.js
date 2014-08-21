@@ -9,7 +9,7 @@ function updatePace() {
 	$paceInput = $('[name="activity[pace]"]');
 
 	// Check if distance input is a number, if it exists, and if the duration input exists
-	if ( $.isNumeric($distanceInput.val()) && $distanceInput.val() && $durationInput.val() ) {
+	if ( $.isNumeric($distanceInput.val()) && $distanceInput.val() > 0 && $durationInput.val() ) {
 
 		distance = parseFloat($distanceInput.val());
 		parsedDuration = $durationInput.val().split(":")
@@ -25,24 +25,30 @@ function updatePace() {
 			console.log('Incorrect input entered in activity[duration]');
 		}
 
-		// Calculates mile pace, [s/mile]
-		pace = secondsDuration / distance;
+		if ( $.isNumeric(secondsDuration) && secondsDuration > 0 ) {
+			// Calculates mile pace, [s/mile]
+			pace = secondsDuration / distance;
 
-		// Converts pace to mm:ss format
-		paceArray = [];
-		paceArray.push(String(Math.floor(pace / 60)));
-		paceSeconds = Math.round((pace % 60)*10)/10;
-		if ( paceSeconds < 10 ) {
-			paceArray.push("0" + String(paceSeconds));
+			// Converts pace to mm:ss format
+			paceArray = [];
+			paceArray.push(String(Math.floor(pace / 60)));
+			paceSeconds = Math.round((pace % 60)*10)/10;
+			if ( paceSeconds < 10 ) {
+				paceArray.push("0" + String(paceSeconds));
+			} else {
+				paceArray.push(String(paceSeconds));
+			}
+			paceString = paceArray.join(':');
+			
+			// Sets the pace form input as to the calculated value and disables the input
+			$paceInput.val(paceString);
+			$paceInput.attr('readonly', true);
 		} else {
-			paceArray.push(String(paceSeconds));
+			// resets the pace form input
+			$paceInput.val(null);
+			$paceInput.attr('readonly', false);
+			console.log('activity[distance] or activity[duration] is invalid.');
 		}
-		paceString = paceArray.join(':');
-		
-		// Sets the pace form input as to the calculated value and disables the input
-		$paceInput.val(paceString);
-		$paceInput.attr('readonly', true);
-
 
 	} else {
 		// resets the pace form input
