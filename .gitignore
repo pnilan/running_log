@@ -19,3 +19,6 @@
 
 # Ignore custom environment variables
 /config/initializers/app_env_vars.rb
+
+# Ignore simplecov coverage folder
+/coverage/*
