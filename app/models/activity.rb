@@ -37,7 +37,7 @@ class Activity < ActiveRecord::Base
 				distance += activity.distance
 			end
 		end
-		distance
+		distance.round(1)
 	end
 
 	def self.distance_this_week(current_user)
@@ -49,7 +49,7 @@ class Activity < ActiveRecord::Base
 				distance += activity.distance
 			end
 		end
-		distance
+		distance.round(1)
 	end
 
 	def self.distance_this_month(current_user)
@@ -61,7 +61,7 @@ class Activity < ActiveRecord::Base
 				distance += activity.distance
 			end
 		end
-		distance
+		distance.round(1)
 	end
 
 	def chrono_duration
