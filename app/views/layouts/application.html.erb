@@ -97,6 +97,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_user.name %>
                 <%= gravatar_for(current_user, size: 50) %>
+              </a>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
                   <li class="dropdown-header">
                     <%= current_user.name %>
@@ -113,7 +114,6 @@
                     <%= link_to 'Sign out', signout_path, method: 'delete' %>
                   </li>
                 </ul>
-              </a>
             </div>
             <% end %>
           </div>
