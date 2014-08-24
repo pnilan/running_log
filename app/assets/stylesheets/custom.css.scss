@@ -51,7 +51,7 @@ ul.sidebar {
 
   .sidebar-logo {
     height: 60px;
-    background-color: $flatterOrange;
+    background-color: $darkerGrey;
     text-align: center;
     text-indent: 0;
     text-transform: uppercase;
@@ -60,7 +60,7 @@ ul.sidebar {
     a {
       font-size: 24px;
       line-height: 60px;
-      color: #fff;
+      color: $flatterOrange;
     }
   }
 
@@ -68,10 +68,9 @@ ul.sidebar {
     height: 65px;
 
     a {
-      font-size: 18px;
+      font-size: 12px;
       line-height: 60px;
       color: #fff;
-      background-color: $darkerGrey;
       }
 
     .menu-icon {
@@ -120,19 +119,22 @@ ul.sidebar {
   }
 }
 
-li.active a {
-  color: #fff !important;
+li.active {
+  background-color: $darkerGrey;
 
-  &:before {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent; 
-    border-right: 10px solid #fff;
-    margin-top: 10.5px;
+  a {
+    color: #fff !important;
+    &:before {
+      content: '';
+      position: absolute;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent; 
+      border-right: 8px solid #fff;
+      margin-top: 12px;
+    }
   }
 }
 
@@ -198,7 +200,7 @@ li.active a {
 
 .row.header {
   height: 60px;
-  background-color: #fff;
+  background-color: $lightGrey;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -223,12 +225,12 @@ li.active a {
   line-height: 60px;
 
   a, a:focus {
-    color: $lightDarkGrey;
+    color: $darkGrey;
     text-decoration: none;
   }
 
   a:hover {
-    color: darken( $lightDarkGrey, 20% );
+    color: darken( $darkGrey, 20% );
     text-decoration: none;
   }
 }

@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require Chart
 //= require_tree .
 //= require jquery.cookie
 

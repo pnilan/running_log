@@ -11,6 +11,7 @@ gem 'chronic'
 gem 'chronic_duration'
 gem 'simple_form'
 gem 'simple_calendar', "~> 1.1.0"
+gem 'chart-js-rails'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
