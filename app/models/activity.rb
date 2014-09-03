@@ -28,7 +28,7 @@ class Activity < ActiveRecord::Base
 
 	def self.distance_today(current_user)
 		distance = 0
-		activities = Activity.where('user_id= ? AND date = ?', current_user.id, Date.today)
+		activities = Activity.where('user_id= ? AND date = ?', current_user.id, Date.current)
 
 		activities.each do |activity|
 			if activity.distance != nil
@@ -40,10 +40,10 @@ class Activity < ActiveRecord::Base
 
 	def self.distance_this_week(current_user)
 		distance = 0
-		if Date.today.wday != 1
-			activities = Activity.where('user_id= ? AND date >= ? AND date < ?', current_user.id, Chronic.parse('last monday'), Chronic.parse('next monday'))
+		if Date.current.wday != 1
+			activities = Activity.where('user_id= ? AND date >= ? AND date < ?', current_user.id, Chronic.parse('last monday').to_date, Chronic.parse('next monday').to_date)
 		else
-			activities = Activity.where('user_id= ? AND date >= ? AND date < ?', current_user.id, Date.today, Chronic.parse('next monday'))
+			activities = Activity.where('user_id= ? AND date >= ? AND date < ?', current_user.id, Date.current, Chronic.parse('next monday').to_date)
 		end
 
 		distance = activities.sum(:distance).round(1)
@@ -51,7 +51,7 @@ class Activity < ActiveRecord::Base
 
 	def self.distance_this_month(current_user)
 		distance = 0
-		activities = Activity.where('user_id= ? AND date >= ? AND date < ?', current_user.id, Chronic.parse('the first of this month'), Chronic.parse('the first of this month') + 1.month)
+		activities = Activity.where('user_id= ? AND date >= ? AND date < ?', current_user.id, Chronic.parse('the first of this month').to_date, Chronic.parse('the first of this month').to_date + 1.month)
 
 		activities.each do |activity|
 			if activity.distance != nil
@@ -62,19 +62,25 @@ class Activity < ActiveRecord::Base
 	end
 
 	def self.this_week
-		days = 1..7
 		distances = []
 
-		days.each do |day|
-			if day < Date.today.wday
-				distances << where('date = ?', Chronic.parse('last #{Date::DAYNAMES[day]}')).sum(:distance).round(1)
-			elsif day > Date.today.wday
-				distances << where('date = ?', Chronic.parse(Date::DAYNAMES[day])).sum(:distance).round(1)
+		7.times do |day|
+			if day == 0
+				if day == Date.current.wday
+					distances << where('date = ?', Date.current).sum(:distance).round(1)
+				else
+					distances << where('date = ?', Chronic.parse('Sunday', context: :future).to_date).sum(:distance).round(1)
+				end
+			elsif day < Date.current.wday
+				distances << where('date = ?', Chronic.parse(Date::DAYNAMES[day], context: :past).to_date).sum(:distance).round(1)
+			elsif day > Date.current.wday
+				distances << where('date = ?', Chronic.parse(Date::DAYNAMES[day]).to_date).sum(:distance).round(1)
 			else
-				distances << where('date = ?', Date.today).sum(:distance).round(1)
+				distances << where('date = ?', Date.current).sum(:distance).round(1)
 			end
 		end
-		distances
+		distances << distances.shift
+		distances.map { |distance| distance.to_i }
 	end
 
 	def chrono_duration

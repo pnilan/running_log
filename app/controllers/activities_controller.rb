@@ -13,7 +13,7 @@ before_action :correct_user, only: [:destroy, :edit, :update, :update]
   end
   
   def new
-    @activity = Activity.new(params[:id])
+    @activity = Activity.new
   end
 
   def create  	
