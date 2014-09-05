@@ -80,7 +80,6 @@ class Activity < ActiveRecord::Base
 			end
 		end
 		distances << distances.shift
-		distances.map { |distance| distance.to_i }
 	end
 
 	def chrono_duration

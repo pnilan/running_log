@@ -10,13 +10,13 @@ function size(animate) {
     clearTimeout(t);
 
     t = setTimeout(function() {
-        $('#weekly-chart').each(function(i,el) {
-            $(el).attr({
-                // sets canvas element's height and width to its parent's height and width
-                "width":$(el).parent().width(),
-                "height":$(el).parent().height()
-            });
-        });
+        // $('#weekly-chart').each(function(i,el) {
+        //     $(el).attr({
+        //         // sets canvas element's height and width to its parent's height and width
+        //         "width":$(el).parent().width(),
+        //         "height":$(el).parent().height()
+        //     });
+        // });
 
         // call redraw function to build chart
         redraw(animate);
@@ -26,7 +26,11 @@ function size(animate) {
 function redraw(animation) {
 
     // default option is to not show tooltips, chart currently glitches with tooltips on
-    var options = { showTooltips: false };
+    var options = { 
+        showTooltips: true,
+        responsive: true,
+        maintainAspectRatio: false
+        };
 
     // set animation on or off
     if (!animation) {
@@ -35,14 +39,14 @@ function redraw(animation) {
         options.animation = true;
     }
 
-    // temporary datapoints, add database data later
+    // Datapoints taken from data-activities attribute on canvas element
     var data = {
         labels: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
         datasets: [
         {
             fillColor: "#e98b39",
             strokeColor: "#e98b39",
-            data: <%= Activity.this_week %>
+            data: $("#weekly-chart").data('activities')
         },
         ]
     }     

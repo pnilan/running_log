@@ -32,10 +32,10 @@
 			</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-md-8 col-xs-12">
 			<div class="widget chart-widget">
-				<canvas id="weekly-chart"></canvas>
-			</div>
+				<%= content_tag :canvas, "", id: "weekly-chart", data: { activities: @user.activities.this_week } %>
+				</div>
 		</div>
 	</div>
 
