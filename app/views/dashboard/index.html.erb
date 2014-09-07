@@ -32,10 +32,20 @@
 			</div>
 	</div>
 	<div class="row">
-		<div class="col-md-8 col-xs-12">
-			<div class="widget chart-widget">
-				<%= content_tag :canvas, "", id: "weekly-chart", data: { activities: @user.activities.this_week } %>
-				</div>
+		<div class="col-xs-12">
+				<div class="chart-widget">
+					<div class="widget-label">
+						<p class="chart-label">
+							Daily miles for current week <br/>
+							<small><%= Date.today.at_beginning_of_week.strftime("%m/%d/%Y") %> - <%= Date.today.at_end_of_week.strftime("%m/%d/%Y") %></small>
+						</p>
+					</div>
+					<div class="row">
+					<div class="col-md-8 col-md-offset-2 col-xs-12 chart-container">
+						<%= content_tag :canvas, "", id: "weekly-chart", data: { activities: @user.activities.this_week } %>
+					</div>
+					</div>
+			</div>
 		</div>
 	</div>
 

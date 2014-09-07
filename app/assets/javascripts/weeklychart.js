@@ -1,66 +1,41 @@
-// set up timeout variable
-var t;
-function size(animate) {
+function drawGraph(animation, timeout) {
 
-    // requires animate to be explicitly called for animation to occur
-    if (animate == undefined) {
-        animate = false;
-    }
-
-    clearTimeout(t);
-
-    t = setTimeout(function() {
-        // $('#weekly-chart').each(function(i,el) {
-        //     $(el).attr({
-        //         // sets canvas element's height and width to its parent's height and width
-        //         "width":$(el).parent().width(),
-        //         "height":$(el).parent().height()
-        //     });
-        // });
-
-        // call redraw function to build chart
-        redraw(animate);
-    }, 30); //the timeout should run after 30 milliseconds
-}
-
-function redraw(animation) {
-
-    // default option is to not show tooltips, chart currently glitches with tooltips on
-    var options = { 
-        showTooltips: true,
-        responsive: true,
-        maintainAspectRatio: false
+        var options = { 
+            showTooltips: false,
+            maintainAspectRatio: false,
+            responsive: false, 
+            animation: true
         };
 
-    // set animation on or off
-    if (!animation) {
-        options.animation = false;
-    } else {
-        options.animation = true;
-    }
+        if (animation === false) { options.animation = false };
 
-    // Datapoints taken from data-activities attribute on canvas element
-    var data = {
-        labels: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-        datasets: [
-        {
-            fillColor: "#e98b39",
-            strokeColor: "#e98b39",
-            data: $("#weekly-chart").data('activities')
-        },
-        ]
-    }     
+        var data = {
+            labels: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+            datasets: [
+                {
+                    fillColor: "#e98b39",
+                    strokeColor: "#e98b39",
+                    data: $("#weekly-chart").data('activities')
+                }
+            ]
+        };
 
-   // set up ChartJS weekly chart
-   var canvas = document.getElementById('weekly-chart');
-   var ctx = canvas.getContext("2d");
-   new Chart(ctx).Bar(data, options);
+
+        // draws the weekly chart graph
+        var canvas = document.getElementById('weekly-chart');
+        var ctx = canvas.getContext("2d");
+        ctx.canvas.width = $('#weekly-chart').parent().width();
+        ctx.canvas.height = $('#weekly-chart').parent().height();
+        console.log("width is: " + ctx.width);
+        console.log("height is: " + ctx.height);
+        new Chart(ctx).Bar(data, options);
+
 }
 
 $(function() {
-    // on window resize, run the size function with animation turned off
-    $(window).on('resize', function() { size(false); });
+    $(window).on('resize', function() {
+        drawGraph(false);
+    });
 
-    // draws the first graph
-    size(true); 
+    drawGraph(true);
 });
