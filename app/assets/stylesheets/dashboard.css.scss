@@ -4,6 +4,8 @@
 
 @import "base";
 
+// home
+
 .widget {
   height: 150px;
   background: #fff;
@@ -51,10 +53,12 @@
 	display: block;
 	width: auto;
 	height: 300px !important;
+	line-height: 60px;
+	text-align: center;
 }
 
 canvas {
-	margin: 0 auto;
+	margin: 0 auto; 
 	display: block;
 	height: 100% !important;
 	width: 100% !important;

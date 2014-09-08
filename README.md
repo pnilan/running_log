@@ -1,3 +1,10 @@
 # Running Log
 
-This is a little project to create a running log personalized for myself. I will hopefully be adding on features such as data visualization and perhaps adding a running route feature. The goal is to develop my own app that has all the features that other sites charge extra for.
+This is a Ruby on Rails project to create a running log. The running log is focused on the elite athlete that does not need all the extra features of modern running log web applications. This app provides the ability to add completed and future activities. Activities take on a run type (Easy, Endurance, Fartlek, Tempo, etc) and duration/distance/pace along with notes. A weekly chart was added onto the dashboard home using [ChartJS](http://chartjs.org).
+
+## Upcoming Features
+
+- Dynamic charts to analyze performance over a selected period of time. One will be able to filter based on activity type, distance, date, and activity feel.
+- Races
+- Track shoe mileage
+- Routes
