@@ -1,0 +1,71 @@
+<div class="modal fade" id="new-activity-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">New Activity</h4>
+      </div>
+      <div class=" modal-body container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <%= render 'shared/error_messages' %>
+          </div>
+        </div>
+          <%= form_for Activity.new do |f| %>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :date, "Activity date" %>
+                  <%= f.date_field :date, value: Date.today, class: "form-control" %> 
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :type_id, "Activity type" %>
+                  <%= f.collection_select :type_id, Type.all, :id, :name, {include_blank: "Select a type"}, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+                  
+            <div class="row">     
+              <div class="col-md-4">
+                <div class="form-group">
+                  <%= f.label :distance, "Distance" %>
+                  <%= f.text_field :distance, placeholder: "Miles", class: "form-control"  %>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <%= f.label :duration, "Duration" %>
+                  <%= f.text_field :duration, placeholder: "hh:mm:ss", class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <%= f.label :pace, "Pace" %>
+                  <%= f.text_field :pace, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= f.label :content, "Notes" %>
+                  <%= f.text_area :content, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <%= button_tag "Close", type: "button", class: "btn btn-default", data: { dismiss: "modal" } %>
+        <%= f.submit "Log it!", name: "log-activity", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

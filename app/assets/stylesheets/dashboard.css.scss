@@ -57,11 +57,18 @@
 	text-align: center;
 }
 
-canvas {
+#weekly-chart {
 	margin: 0 auto; 
 	display: block;
 	height: 100% !important;
 	width: 100% !important;
+}
+
+// Activity modal
+
+.modal {
+	z-index: 9999;
+	position: absolute;
 }
 
 // Dashboard calendar

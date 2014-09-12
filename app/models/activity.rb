@@ -82,6 +82,12 @@ class Activity < ActiveRecord::Base
 		distances << distances.shift
 	end
 
+	# def self.current_week(output)
+	# 	grouped_activities = where('date >= ? AND date <= ?', Date.current.beginning_of_week, Date.current.end_of_week).group('DATE(date)').sum(:distance)
+	# 	# if output == 'date'
+	# 	# 	grouped_activities.each { |k,v| k.strftime('%-m/%-d/%y') }
+	# end
+
 	def chrono_duration
 		if self.duration
 			ChronicDuration.output(self.duration, format: :chrono)

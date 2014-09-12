@@ -84,10 +84,11 @@
       <div class="row header">
         <div class="col-xs-12">
           <div class="header-add pull-left">
-            <%= link_to new_activity_path do %>
+            <%= link_to '#new-activity-modal', data: { toggle: "modal" } do %>
                 Add Activity
                 <i class="fa fa-plus-circle"></i>
             <% end %>
+            <!-- <button type="button" data-toggle="modal" data-target="#new-activity-modal">Launch modal</button> -->
           </div>
 
           <div class="user pull-right">
@@ -125,6 +126,8 @@
 
 
       <%= yield %>
+
+      <%= render 'shared/activity_modal' %>
 
  
     <div class="container-fluid">

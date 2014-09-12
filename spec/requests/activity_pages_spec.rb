@@ -17,11 +17,11 @@ describe "Activity pages" do
 		describe "with invalid information" do
 
 			it "should not create an activity" do
-				expect { click_button "Log it!"}.not_to change(Activity, :count)
+				expect { click_button "Log it!", match: :first}.not_to change(Activity, :count)
 			end
 
 			describe "error messages" do
-				before { click_button "Log it!" }
+				before { click_button "Log it!", match: :first }
 				it { should have_content("error") }
 			end
 		end
@@ -29,12 +29,12 @@ describe "Activity pages" do
 		describe "with valid information" do
 
 			before do
-				select "Recovery", :from => "activity[type_id]"
-				fill_in "date", with: Date.today
+				select "Recovery", :from => "activity[type_id]", match: :first
+				fill_in "date", match: :first, with: Date.today
 			end
 
 			it "should create an activity" do
-				expect { click_button "Log it!"}.to change(Activity, :count).by(1)
+				expect { click_button "Log it!", match: :first}.to change(Activity, :count).by(1)
 			end
 
 		end

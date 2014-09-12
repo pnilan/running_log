@@ -1,4 +1,4 @@
-function drawGraph(animation, timeout) {
+function weeklyGraph(animation) {
 
         var options = { 
             showTooltips: false,
@@ -20,22 +20,21 @@ function drawGraph(animation, timeout) {
             ]
         };
 
-
         // draws the weekly chart graph
         var canvas = document.getElementById('weekly-chart');
         var ctx = canvas.getContext("2d");
         ctx.canvas.width = $('#weekly-chart').parent().width();
         ctx.canvas.height = $('#weekly-chart').parent().height();
-        console.log("width is: " + ctx.width);
-        console.log("height is: " + ctx.height);
+        console.log("width is: " + ctx.canvas.width);
+        console.log("height is: " + ctx.canvas.height);
         new Chart(ctx).Bar(data, options);
 
 }
 
 $(function() {
     $(window).on('resize', function() {
-        drawGraph(false);
+        weeklyGraph(false);
     });
 
-    drawGraph(true);
+    weeklyGraph(true);
 });
