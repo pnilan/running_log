@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
     @distance_this_week = Activity.distance_this_week(@user)
     @distance_this_month = Activity.distance_this_month(@user)
     @weekly_distances = @user.activities.this_week
+    # @types = Type.all
   end
 
   def calendar

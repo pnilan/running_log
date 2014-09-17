@@ -2,18 +2,11 @@ class User < ActiveRecord::Base
 	has_many :activities, dependent: :destroy
 	
 	before_save do
-		self.username.downcase!
 		self.email.downcase!
 	end
 	before_create :create_remember_token
 
-	VALID_USERNAME_REGEX = /\A[a-z0-9_-]+\z/i
-	validates :username, presence: true, 
-						 uniqueness: { case_sensitive: false }, 
-						 length: {maximum: 16}, 
-						 format: { with: VALID_USERNAME_REGEX }
-
-	validates :name, length: { maximum: 50 }
+	validates :name, length: { maximum: 50 }, presence: true
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, 

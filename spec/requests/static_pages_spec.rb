@@ -10,11 +10,8 @@ describe "Static Pages" do
 		before { visit root_path }
 
 		it { should have_content("SecondWind") }
-		it { should have_title(full_title('')) }
+		it { should have_title(full_title('The Elite Training Log')) }
 		it { should_not have_title('| Home') }
-
-
-
 	end
 
 	describe 'Contact page' do

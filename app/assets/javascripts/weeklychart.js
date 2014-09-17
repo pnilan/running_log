@@ -22,6 +22,7 @@ function weeklyGraph(animation) {
 
         // draws the weekly chart graph
         var canvas = document.getElementById('weekly-chart');
+        if (canvas === null) { return };
         var ctx = canvas.getContext("2d");
         ctx.canvas.width = $('#weekly-chart').parent().width();
         ctx.canvas.height = $('#weekly-chart').parent().height();

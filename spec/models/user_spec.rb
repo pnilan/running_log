@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe User do
   
-	before { @user = User.new(username: "example_user", name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
+	before { @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
 
 	subject { @user }
 
-	it { should respond_to(:username) }
 	it { should respond_to(:name) }
 	it { should respond_to(:email) }
 	it { should respond_to(:password_digest) }
@@ -29,45 +28,10 @@ describe User do
 		it { should be_admin }
 	end
 
-	describe "when username is not present" do
-		before { @user.username = " " }
+	describe "when name is not present" do
+		before { @user.name = " " }
 		it { should_not be_valid }
 	end	
-
-	describe "when username is too long" do
-		before { @user.username = "a" * 17 }
-		it { should_not be_valid }
-	end
-
-	describe "when username format is invalid" do
-		it "should be invalid" do
-			usernames = %w[foo@!#$%^&*()<> foo.bar]
-			usernames.each do |invalid_username|
-				@user.username = invalid_username
-				expect(@user).not_to be_valid
-			end
-		end
-	end
-
-	describe "when username format is valid" do
-		it "should be valid" do
-			usernames = %w[f 1 foobar2 foo_bar_ foo-bar2 foo_bar-foo_bar- f_______________]
-			usernames.each do |valid_username|
-				@user.username = valid_username
-				expect(@user).to be_valid
-			end
-		end
-	end
-
-	describe "when username is already taken" do
-		before do
-			user_with_same_username = @user.dup
-			user_with_same_username.username = @user.username.upcase
-			user_with_same_username.save
-		end
-
-		it { should_not be_valid }
-	end
 
 	describe "when name is too long" do
 		before { @user.name = "a" * 51 }
@@ -101,7 +65,7 @@ describe User do
 
 	describe "when password is not present" do
 		before do
-			@user = User.new(username: "example_user", name: "Example User", email: "user@example.com", password: " ", password_confirmation: " ")
+			@user = User.new(name: "Example User", email: "user@example.com", password: " ", password_confirmation: " ")
 		end
 
 		it { should_not be_valid }

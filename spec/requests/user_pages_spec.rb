@@ -20,7 +20,6 @@ describe "User pages" do
 
 		describe "with valid information" do
 			before do
-				fill_in "user[username]",			with: "example_user"
 				fill_in "user[name]",		with: "Example User"
 				fill_in "user[email]",			with: "example@user.com"
 				fill_in "user[password]",			with: "foobar"
@@ -46,9 +45,8 @@ describe "User pages" do
     	let(:user) { FactoryGirl.create(:user) }
     	before { visit user_path(user) }
 
-    	it { should have_content(user.username) }
     	it { should have_content(user.name) }
-    	it { should have_title(user.username) }
+    	it { should have_title(user.name) }
     end
 
     describe "edit" do
