@@ -10,6 +10,7 @@ before_action :correct_user, only: [:destroy, :edit, :update, :update]
 
   def show
     @activity = Activity.find(params[:id])
+    @type = Type.all
   end
   
   def new
@@ -37,7 +38,7 @@ before_action :correct_user, only: [:destroy, :edit, :update, :update]
   		# Handle a successful update
   		flash[:notice] = "Activity updated."
   	end
-  	render 'edit'
+  	render dashboard_calendar_path
   end
 
   def destroy

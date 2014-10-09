@@ -1,1 +1,74 @@
-Hello
+<% provide(:title, 'View Activity') %>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			<%= render 'shared/error_messages' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="activity-heading">Activity on <%= @activity.date.strftime("%-m/%-d/%Y") %></h1>
+		</div>
+	</div>
+
+		<%= form_for(@activity) do |f| %>
+
+			<div class="row">
+				<div class="col-md-3 col-md-offset-3">
+					<div class="form-group">
+						<%= f.label :date, "Activity date" %>
+						<%= f.date_field :date, value: Date.today, class: "form-control", readonly: false %> 
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<%= f.label :type_id, "Activity type" %>
+						<%= f.collection_select :type_id, Type.all, :id, :name, {include_blank: "Select a type"}, class: "form-control", readonly: false %>
+					</div>
+				</div>
+			</div>
+						
+			<div class="row">			
+				<div class="col-md-2 col-md-offset-3">
+					<div class="form-group">
+						<%= f.label :distance, "Distance" %>
+						<%= f.text_field :distance, placeholder: "Miles", class: "form-control", readonly: true  %>
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<%= f.label :duration, "Duration" %>
+						<%= f.text_field :duration, placeholder: "hh:mm:ss", class: "form-control", readonly: true %>
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<%= f.label :pace, "Pace" %>
+						<%= f.text_field :pace, class: "form-control", readonly: true %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="form-group">
+						<%= f.label :content, "Notes" %>
+						<%= f.text_area :content, class: "form-control", readonly: true %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 form-footer">
+					<%= button_to "Cancel", dashboard_calendar_path, class: "btn btn-default" %>
+					<%= f.submit "Update Activity!", class: "btn btn-primary" %>
+					<%= button_to "Delete Activity", dashboard_calendar_path, method: 'get', class: "btn btn-notice" %>
+				</div>
+			</div>
+
+		<% end %>
+</div>

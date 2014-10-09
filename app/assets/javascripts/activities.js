@@ -58,6 +58,55 @@ function updatePace() {
 	}
 }
 
+function formatTime(input) {
+	// Defines form inputs
+	if ( input == 'duration') {
+		$input = $('[name="activity[duration]"]');
+	} else if ( input == 'pace' ) {
+		$input = $('[name="activity[pace]"]');
+	} else {
+		return;
+	};
+
+	// Check if value exists, if not then end function
+	if ( $input.val() ) {
+		time = $input.val();
+	} else {
+		return;
+	};
+
+	// Determines magnitude of time: h for hours, m for minutes, and s for seconds
+	if ( time > 3600 ) {
+		h = Math.floor(time / 3600);
+
+		m = Math.floor((time - (3600 * h)) / 60);
+		if ( h > 0 && m < 10 ) {
+			m = "0" + String(m);
+		}
+
+		s = time - (3600 * h) - (60 * m);
+		if ( s < 10 ) {
+			s = "0" + String(s);
+		}
+
+		outputArray = [h, m, s];
+	} else {
+		m = Math.floor(time / 60);
+		s = time - (60 * m);
+		if ( s < 10 ) {
+			s = "0" + String(s);
+		}
+
+		outputArray = [m, s];
+	};
+
+	// Creates string output
+	outputString = outputArray.join(':');
+
+	// Updates input value to show formatted time
+	$input.val(outputString);
+}
+
 $(function() {
 	$duration = $('[name="activity[duration]"]');
 	$distance = $('[name="activity[distance]"]');
@@ -69,4 +118,7 @@ $(function() {
 	$distance.on('input', function() {
 		updatePace();
 	});
+
+	formatTime('duration');
+	formatTime('pace');
 });

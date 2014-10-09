@@ -200,7 +200,6 @@ li.active {
 
 .row.header {
   height: 60px;
-  // background-color: $lightGrey;
   background-color: #fff;
   padding-left: 10px;
   padding-right: 10px;
@@ -209,10 +208,11 @@ li.active {
 .header-add {
   line-height: 60px;
 
-  a {
+  a, a:focus{
     font-size: 18px;
     color: $flatBlue;
     text-transform: uppercase;
+    text-decoration: none;
   }
 
   a:hover {
@@ -258,11 +258,6 @@ li.active {
   height: auto;
 }
 
-
-
-
-
-
 /* forms */
 
 #error_explanation {
@@ -276,5 +271,11 @@ li.active {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+.form-footer input {
+  display: inline;
+  float: left;
+  margin-right: 10px;
 }
 

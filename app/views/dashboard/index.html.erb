@@ -40,13 +40,13 @@
 							<small><%= Date.today.at_beginning_of_week.strftime("%-m/%-d/%Y") %> - <%= Date.today.at_end_of_week.strftime("%-m/%-d/%Y") %></small>
 						</p>
 					</div>
-					<div class="row">
+				<div class="row">
 						<div class="col-md-8 col-md-offset-2 col-xs-12 chart-container">
 							<% if @user.activities.this_week.inject { |sum, x| sum + x } === 0 %>
 								<h2>You have no completed or planned activities for this week!</h2>
 								<h3>
-									<%= link_to new_activity_path do %>
-									    Add an activity!
+									<%= link_to '#new-activity-modal', data: { toggle: "modal" } do %>
+									    Add Activity
 									    <i class="fa fa-plus-circle"></i>
 									<% end %>
 								</h3>
@@ -67,14 +67,18 @@
 						Current Shoe
 					</p>
 				</div>
-				<div class="chart-container">
-					<%= content_tag :canvas, "", id: 'shoe-donut' %>
-				</div>
+				<!-- <div class="chart-container">
+					<%#= content_tag :canvas, "", id: 'shoe-donut' %>
+				</div> -->
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-6">
 			<div class="widget">
-				FAVORITE ROUTE
+				<div class="widget-label">
+					<p class="chart-label">
+						Favorite Route
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

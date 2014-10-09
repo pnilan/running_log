@@ -11,11 +11,10 @@
 			  <% activities.each do |activity| %>
 
 			  		<div class="activity-item">
-			  			<%= link_to activity_path(activity.id), class: "activity-link" do %>
+			  			<%= link_to activity, class: "activity-link", data: { toggle: "modal", id: activity.id, type: @types.find(activity.type_id).name, date: activity.date } do %>
 			  				<%= @types.find(activity.type_id).name %> <% if activity.distance %>/ <%= activity.distance.round(1) %> mi. <% end %> <% if activity.duration %> / <%= activity.chrono_duration %> <% end %>
 			  				<% end %>
 			  	</div>
-
 			  <% end %>
 			<% end %>
 		</div>
