@@ -18,6 +18,6 @@ FactoryGirl.define do
 		pace "360"
 		content "Lorem ipsum"
 		user
-		run_type "test"
+		run_type "Endurance"
 	end
 end

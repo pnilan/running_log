@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Activity pages" do
+describe "Activity pages", type: :request do
 
 	subject { page }
 
@@ -8,16 +8,22 @@ describe "Activity pages" do
 
 	describe "activity creation" do
 
-		before { visit new_activity_path }
+
+		before do 
+			sign_in user
+			visit "/activities/new"
+		end
+
+		let(:submit) { "Log it!" }
 
 		describe "with invalid information" do
 
 			it "should not create an activity" do
-				expect { click_button "log-activity", match: :first}.not_to change(Activity, :count)
+				expect { click_button submit, match: :first }.not_to change(Activity, :count)
 			end
 
 			describe "error messages" do
-				before { click_button "log-activity", match: :first }
+				before { click_button submit, match: :first }
 				it { should have_content("error") }
 			end
 		end
@@ -25,12 +31,12 @@ describe "Activity pages" do
 		describe "with valid information" do
 
 			before do
-				select "endurance", :from => "Run type", visible: false, match: :first
+				select "Endurance", :from => "Run type", match: :first
 				fill_in "date", match: :first, with: Date.today
 			end
 
 			it "should create an activity" do
-				expect { click_button "Log it!", match: :first}.to change(Activity, :count).by(1)
+				expect { click_button submit, match: :first }.to change(Activity, :count).by(1)
 			end
 
 		end

@@ -11,8 +11,8 @@
 			  <% activities.each do |activity| %>
 
 			  		<div class="activity-item">
-			  			<%= link_to activity, class: "activity-link", data: { toggle: "modal", id: activity.id, type: activity.type, date: activity.date } do %>
-			  				<%= activity.type %> <% if activity.distance %>/ <%= activity.distance.round(1) %> mi. <% end %> <% if activity.duration %> / <%= activity.chrono_duration %> <% end %>
+			  			<%= link_to activity, class: "activity-link", data: { toggle: "modal", id: activity.id, type: activity.run_type, date: activity.date } do %>
+			  				<%= activity.run_type %> <% if activity.distance %>/ <%= activity.distance.round(1) %> mi. <% end %> <% if activity.duration %> / <%= activity.chrono_duration %> <% end %>
 			  				<% end %>
 			  	</div>
 			  <% end %>
