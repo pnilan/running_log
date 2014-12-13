@@ -5,10 +5,6 @@ describe "Activity pages" do
 	subject { page }
 
 	let(:user) { FactoryGirl.create(:user) }
-	before do 
-		FactoryGirl.create(:type)
-		sign_in user
-	end
 
 	describe "activity creation" do
 
@@ -17,11 +13,11 @@ describe "Activity pages" do
 		describe "with invalid information" do
 
 			it "should not create an activity" do
-				expect { click_button "Log it!", match: :first}.not_to change(Activity, :count)
+				expect { click_button "log-activity", match: :first}.not_to change(Activity, :count)
 			end
 
 			describe "error messages" do
-				before { click_button "Log it!", match: :first }
+				before { click_button "log-activity", match: :first }
 				it { should have_content("error") }
 			end
 		end
@@ -29,7 +25,7 @@ describe "Activity pages" do
 		describe "with valid information" do
 
 			before do
-				select "Recovery", :from => "activity[type_id]", match: :first
+				select "endurance", :from => "Run type", visible: false, match: :first
 				fill_in "date", match: :first, with: Date.today
 			end
 

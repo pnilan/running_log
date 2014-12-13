@@ -5,7 +5,7 @@ describe Activity do
 	let(:user) { FactoryGirl.create(:user) }
 
 	before do
-		@activity = user.activities.build(date: Date.today, distance: 10.00, duration: 3600, pace: 360, content: "Lorem ipsum", user_id: user.id, type_id: 1)
+		@activity = user.activities.build(date: Date.today, distance: 10.00, duration: 3600, pace: 360, content: "Lorem ipsum", user_id: user.id, run_type: "test")
 	end
 
 	subject { @activity }
@@ -16,7 +16,7 @@ describe Activity do
 	it { should respond_to(:pace) }
 	it { should respond_to(:content) }
 	it { should respond_to(:user_id) }
-	it { should respond_to(:type_id) }
+	it { should respond_to(:run_type) }
 	it { should respond_to(:user) }
 	its(:user) { should eq user }
 
@@ -32,8 +32,8 @@ describe Activity do
 		it { should_not be_valid }
 	end
 
-	describe "when type_id is not present" do
-		before { @activity.type_id = nil }
+	describe "when run_type is not present" do
+		before { @activity.run_type = nil }
 		it { should_not be_valid }
 	end
 
@@ -41,14 +41,4 @@ describe Activity do
 		before { @activity.content = "a" * 1001 }
 		it  { should_not be_valid }
 	end
-
-	# describe "when distance and duration are present but pace is not" do
-	# 	before do
-	# 		@activity.duration = 60
-	# 		@activity.distance = 10
-	# 		@activity.pace = nil
-	# 	end
-
-	# 	it { should_not be_valid }
-	# end
 end
