@@ -10,7 +10,6 @@ before_action :correct_user, only: [:destroy, :edit, :update, :update]
 
   def show
     @activity = Activity.find(params[:id])
-    @type = Type.all
   end
   
   def new
@@ -50,7 +49,7 @@ before_action :correct_user, only: [:destroy, :edit, :update, :update]
   private
 
   	def activity_params
-  		params.require(:activity).permit(:date, :distance, :duration, :pace, :content, :type_id)
+  		params.require(:activity).permit(:date, :distance, :duration, :pace, :content, :run_type)
   	end
 
   	# Before filters

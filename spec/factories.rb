@@ -18,10 +18,6 @@ FactoryGirl.define do
 		pace "360"
 		content "Lorem ipsum"
 		user
-		type_id 1
-	end
-
-	factory :type do
-		name "Recovery"
+		run_type "test"
 	end
 end

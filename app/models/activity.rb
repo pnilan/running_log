@@ -8,10 +8,9 @@ class Activity < ActiveRecord::Base
 	before_save :parse_duration, :parse_pace
 
 	belongs_to :user
-	has_one :type
 	default_scope -> { order('date DESC') }
 
-	validates :date, :user_id, :type_id, presence: true
+	validates :date, :user_id, :run_type, presence: true
 	validates :content, length: { maximum: 1000 }
 
 	def parse_duration
