@@ -71,6 +71,10 @@
 	position: absolute;
 }
 
+textarea {
+	max-width: 100% !important;
+}
+
 // Dashboard calendar
 
 .calendar-header {
@@ -102,6 +106,7 @@
 
 	th {
 		text-align: center;
+		font-weight: 400;
 	}
 
 	td {

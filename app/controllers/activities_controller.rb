@@ -14,17 +14,20 @@ before_action :correct_user, only: [:destroy, :edit, :update, :update]
   
   def new
     @activity = Activity.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create  	
   	@activity = current_user.activities.build(activity_params)
     @activity.user_id = current_user.id
   	if @activity.save
-  		flash[:success] = "New activity added!"
-  	  redirect_to dashboard_home_path
-    else
-      render 'new'
+      flash[:success] = "New activity added!"
     end
+    redirect_to dashboard_home_path
   end
 
   def edit
@@ -42,8 +45,7 @@ before_action :correct_user, only: [:destroy, :edit, :update, :update]
 
   def destroy
   	@activity.destroy
-  	flash[:notice] = "Activity deleted."
-  	redirect_to dashboard_home_path  	
+    redirect_to dashboard_calendar_path
   end
 
   private

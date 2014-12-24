@@ -92,4 +92,10 @@ class Activity < ActiveRecord::Base
 			ChronicDuration.output(self.duration, format: :chrono)
 		end
 	end
+
+	def chrono_pace
+		if self.pace
+			ChronicDuration.output(self.pace, format: :chrono)
+		end
+	end
 end

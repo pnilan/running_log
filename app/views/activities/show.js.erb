@@ -1,0 +1,6 @@
+$modal = $('#activity-modal'),
+$modalBody = $('#activity-modal .modal-dialog .modal-content .modal-body'),
+$modalHeading = $('#activity-modal .modal-dialog .modal-content .modal-header .modal-title');
+
+$modalHeading.html("<%= @activity.run_type %> run on <%= @activity.date.strftime("%-m/%-d/%Y") %>");
+$modalBody.html("<%= j(render @activity) %>");

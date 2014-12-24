@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid calendar-body">
 	<div class="row">
 		<div class="col-xs-12">
 			<%= month_calendar events: @activities, table: {class: "calendar"}, tr: {class: "calendar-row"}, day_names: "date.day_names" do |date, activities| %>
@@ -11,12 +11,20 @@
 			  <% activities.each do |activity| %>
 
 			  		<div class="activity-item">
-			  			<%= link_to activity, class: "activity-link", data: { toggle: "modal", id: activity.id, type: activity.run_type, date: activity.date } do %>
-			  				<%= activity.run_type %> <% if activity.distance %>/ <%= activity.distance.round(1) %> mi. <% end %> <% if activity.duration %> / <%= activity.chrono_duration %> <% end %>
-			  				<% end %>
+			  			<%= link_to activity, class: "activity-link", remote: true, data: { toggle: "modal", target: "#activity-modal" } do %>
+			  				<%= activity.run_type %> 
+			  					<% if activity.distance %> 
+			  						/ <%= activity.distance.round(1) %> mi.
+			  					<% end %> 
+			  					<% if activity.duration %>
+			  						/ <%= activity.chrono_duration %> 
+			  					<% end %>
+			  			<% end %>
 			  	</div>
 			  <% end %>
 			<% end %>
 		</div>
 	</div>
 </div>
+
+<%= render 'layouts/modal' %>

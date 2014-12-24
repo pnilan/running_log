@@ -1,0 +1,60 @@
+<%= form_for(@activity) do |f| %>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= f.label :date, "Activity date" %>
+						<%= f.date_field :date, value: @activity.date, class: "form-control", disabled: true %> 
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= f.label :run_type, "Run type" %>
+						<%= f.select :run_type, options_for_select(["Recovery", "Tempo", "Warm up", "Cool down", "Fartlek", "Interval", "Easy", "Endurance"]), {include_blank: @activity.run_type}, disabled: true, class: "form-control" %>
+					</div>
+				</div>
+			</div>
+						
+			<div class="row">			
+				<div class="col-md-4">
+					<div class="form-group">
+						<%= f.label :distance, "Distance" %>
+						<%= f.text_field :distance, placeholder: "Miles", class: "form-control", disabled: true  %>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<%= f.label :duration, "Duration" %>
+						<%= f.text_field :duration, placeholder: "hh:mm:ss", value: @activity.chrono_duration, class: "form-control", disabled: true %>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<%= f.label :pace, "Pace" %>
+						<%= f.text_field :pace, value: @activity.chrono_pace, class: "form-control", disabled: true %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<%= f.label :content, "Notes" %>
+						<%= f.text_area :content, class: "form-control", disabled: true %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 form-footer">
+					<%= button_tag "Close", type: "button", class: "btn btn-default", data: { dismiss: "modal" } %>
+					<%= link_to activity, method: :delete, data: { confirm: "Permanently delete activity?" }, class: "btn btn-danger" do %>
+									Delete
+			  	<% end %>
+				</div>
+			</div>
+
+		<% end %>

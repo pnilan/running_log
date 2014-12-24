@@ -84,9 +84,11 @@
       <div class="row header">
         <div class="col-xs-12">
           <div class="header-add pull-left">
-            <%= link_to '#new-activity-modal', data: { toggle: "modal" } do %>
+            <% if request.env['PATH_INFO'] != "/activities/new" %>
+              <%= link_to '#new-activity-modal', data: { toggle: "modal", target: "#new-activity-modal" } do %>
                 Add Activity
                 <i class="fa fa-plus-circle"></i>
+              <% end %>
             <% end %>
           </div>
 
