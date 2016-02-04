@@ -45,7 +45,7 @@
 							<% if @user.activities.this_week.inject { |sum, x| sum + x } === 0 %>
 								<h2>You have no completed or planned activities for this week!</h2>
 								<h3>
-									<%= link_to '#new-activity-modal', data: { toggle: "modal" } do %>
+									<%= link_to '#new-activity-modal', da3ta: { toggle: "modal" } do %>
 									    Add Activity
 									    <i class="fa fa-plus-circle"></i>
 									<% end %>
