@@ -3,8 +3,8 @@ development:
   encoding: unicode
   database: running_log_development
   pool: 5
-  username: pnilan
-  password: password1
+  username: <%= ENV['DB_RUNNING_LOG_USERNAME'] %>
+  password: <%= ENV['DB_RUNNING_LOG_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,5 +14,5 @@ test:
   encoding: unicode
   database: running_log_test
   pool: 5
-  username: pnilan
-  password: password1
+  username: <%= ENV['DB_RUNNING_LOG_USERNAME'] %>
+  password: <%= ENV['DB_RUNNING_LOG_PASSWORD'] %>
